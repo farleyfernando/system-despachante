@@ -1,3 +1,4 @@
+
 <?php $this->load->view('layout/sidebar'); ?>
 
 <!-- page content -->
@@ -8,48 +9,48 @@
 			<div class="x_panel">
 				<div class="x_title">
 
-				<!-- ============================================================== -->
-                <!--                    MENSAGENS AO USUARIO                        -->
-                <!-- ============================================================== -->
+					<!-- ============================================================== -->
+					<!--                    MENSAGENS AO USUARIO                        -->
+					<!-- ============================================================== -->
 
-                <?php if($message = $this->session->flashdata('sucesso')) : ?>
-                            <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong><i class="far fa-smile-wink"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>                
-                            </div>
-                            </div>
-                        <?php endif ?>
+					<?php if($message = $this->session->flashdata('sucesso')) : ?>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
+									<strong><i class="far fa-smile-wink"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					<?php endif ?>
 
-                        <?php if($message = $this->session->flashdata('error')) : ?>
-                            <div class="row mb-5">
-                            <div class="col-md-12 ml-2">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>                
-                            </div>
-                            </div>
-                        <?php endif ?>
+					<?php if($message = $this->session->flashdata('error')) : ?>
+						<div class="row mb-5">
+							<div class="col-md-12 ml-2">
+								<div class="alert alert-danger alert-dismissible fade show" role="alert">
+									<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					<?php endif ?>
 
-                            <?php if($message = $this->session->flashdata('info')) : ?>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                            <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif ?>
+					<?php if($message = $this->session->flashdata('info')) : ?>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="alert alert-info alert-dismissible fade show" role="alert">
+									<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					<?php endif ?>
 					<!-- ============================================================== -->
 					<!--                         breadcrumb                             -->
 					<!-- ============================================================== -->
@@ -63,9 +64,9 @@
 
 					<div class="clearfix"></div>
 				</div>
-				
+
 				<div class="x_content">
-					
+
 					<br/>
 					<form class="form-label-left input_mask" method="post">
 						<div class="form-group row">
@@ -112,7 +113,7 @@
 								<input type="text" class="form-control has-feedback-left" name="empresa_site" value="<?php echo $empresa->empresa_site; ?>" id="inputSuccess4" placeholder="Site">
 								<?php echo form_error('empresa_site','<small class="form-text text-danger">','</small>'); ?>
 								<span class="fa fa-sitemap form-control-feedback left" aria-hidden="true"></span>
-							</div>							
+							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col-md-2 col-sm-3  form-group has-feedback">
@@ -148,27 +149,26 @@
 							<div class="row">
 								<div class="col-12">
 									<label for="message">Observações</label>
-										<textarea id="message" class="form-control" name="empresa_obs" data-parsley-trigger="keyup" 
-										data-parsley-maxlength="100" data-parsley-maxlength-message="Já atigiu a quantidade de caracter permitidos.." 
-										data-parsley-validation-threshold="10" rows="5" cols="200" style="max-height: 60px;min-width: 100"><?php echo $empresa->empresa_obs; ?></textarea>
+									<textarea id="message" class="form-control" name="empresa_obs" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-maxlength-message="Já atigiu a quantidade de caracter permitidos.." data-parsley-validation-threshold="10" rows="5" cols="200"
+											  style="max-height: 60px;min-width: 100"><?php echo $empresa->empresa_obs; ?></textarea>
 								</div>
 							</div>
-						</div>							
 						</div>
-						<div class="clearfix"></div>
-						<div class="ln_solid"></div>
-						<div class="form-group row">
-							<div class="col-md-9 col-sm-9">
-								<button type="submit" class="btn btn-outline-success">Enviar</button>
-								<a href="<?php echo base_url('home'); ?>"><button type="button" class="btn
-								btn-outline-primary">Voltar</button></a>
-							</div>
-						</div>
-					</form>
 				</div>
+				<div class="clearfix"></div>
+				<div class="ln_solid"></div>
+				<div class="form-group row">
+					<div class="col-md-9 col-sm-9">
+						<button type="submit" class="btn btn-outline-success">Enviar</button>
+						<a href="<?php echo base_url('home'); ?>"><button type="button" class="btn
+								btn-outline-primary">Voltar</button></a>
+					</div>
+				</div>
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 
 </div>
 <!-- /page content -->

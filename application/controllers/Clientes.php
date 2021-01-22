@@ -30,6 +30,8 @@ class Clientes extends CI_Controller
                         'vendors/iCheck/skins/flat/green.css',
                         //Cuaton theme style
                         'build/css/custom.min.css',
+						//Cuaton theme style fonts, breadcrumb
+						'build/css/app.css',
                         //DataTable
                         'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css',
                         'vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css',
@@ -188,6 +190,8 @@ class Clientes extends CI_Controller
 						'build/css/custom.min.css',
 						// stilo
 						'build/css/stilo.css',
+						//Cuaton theme style fonts, breadcrumb
+						'build/css/app.css',
 					],
 
 					'scripts' => [
@@ -328,6 +332,8 @@ class Clientes extends CI_Controller
                             'build/css/custom.min.css',
                             // stilo
                             'build/css/stilo.css',
+							//Cuaton theme style fonts, breadcrumb
+							'build/css/app.css',
                             ],
                     
                 'scripts' => [

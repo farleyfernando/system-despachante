@@ -17,7 +17,7 @@ class Empresa extends CI_Controller{
         if(!$this->ion_auth->is_admin()){
 
             $this->session->set_flashdata('error', 'ACESSO NEGADO !!!');
-            redirect('/');
+            redirect('home');
 
         }
     }
@@ -95,6 +95,8 @@ class Empresa extends CI_Controller{
                             'vendors/iCheck/skins/flat/green.css',
                             //Cuaton theme style
                             'build/css/custom.min.css',
+							//Cuaton theme style fonts, breadcrumb
+							'build/css/app.css',
                             ],
                     
                 'scripts' => [

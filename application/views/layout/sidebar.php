@@ -29,6 +29,7 @@
                   <li><a><i class="fa fa-users"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('clientes')?>">Clientes</a></li>
+                      <li><a href="<?php echo base_url('servicos')?>">Serviços</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-car"></i> Veículos <span class="fa fa-chevron-down"></span></a>
@@ -48,6 +49,8 @@
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('users') ?>">Usuários</a></li>
                       <li><a href="<?php echo base_url('empresa') ?>">Empresa</a></li>
+
+
                     </ul>
                   </li>
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
@@ -164,4 +167,3 @@
             </div>
         </div>
 
-        
