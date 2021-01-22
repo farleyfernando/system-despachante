@@ -111,10 +111,18 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<label class="pl-2">Data Nasc. <span>*</span></label>
-								<input type="date" class="form-control" name="cliente_dn" value="<?php echo
-								set_value('cliente_dn'); ?>">
-								<?php echo form_error('cliente_dn','<small class="form-text text-danger">','</small>'); ?>
+								<div class="pessoa_fisica">
+									<label class="pl-2">Data Nasc. <span>*</span></label>
+									<input type="date" class="form-control" name="cliente_dn" value="<?php echo
+									set_value('cliente_dn'); ?>">
+									<?php echo form_error('cliente_dn','<small class="form-text text-danger">','</small>'); ?>
+								</div>
+								<div class="pessoa_juridica">
+									<label class="pl-2">Data Abertura. <span>*</span></label>
+									<input type="date" class="form-control" name="cliente_dn_ab" value="<?php echo
+									set_value('cliente_dn_ab'); ?>">
+									<?php echo form_error('cliente_dn_ab','<small class="form-text text-danger">','</small>'); ?>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="pessoa_fisica">

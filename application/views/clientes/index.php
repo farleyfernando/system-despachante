@@ -81,7 +81,7 @@
                                     <tr>
                                     <th class="text-center">ID</th>
                                     <th>Nome</th>
-                                    <th>CPF/CNPJ</th>
+                                    <th class="text-center">CPF/CNPJ</th>
                                     <th class="text-center">Tipo Cliente</th>
                                     <th class="text-center">Ativo</th>
                                     <th class="text-center no-sort">Ações</th>                                   
@@ -92,7 +92,8 @@
                                         <tr>
                                         <td class="text-center"><?php echo $client->cliente_id ?></td>
                                         <td><?php echo $client->cliente_nome ?></td>
-                                        <td><?php echo $client->cliente_email ?></td>                                       
+                                        <td class="text-center"><?php echo $client->cliente_cpf_cnpj ?></td>
+
                                         <td class="text-center pr-1"><?php echo ($client->cliente_tipo == 2 ? '<span class="badge badge-dark btn-sm">PJ</span>' : '<span class="badge badge-warning btn-sm">PF</span>') ?></td>
 								        <td class="text-center"><?php echo ($client->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td>
                                         <td class="text-center">

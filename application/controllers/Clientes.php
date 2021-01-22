@@ -77,10 +77,6 @@ class Clientes extends CI_Controller
 	public function add()
 	{
 
-
-
-			$this->form_validation->set_rules('cliente_dn','data nasc.','required');
-
 			//verficação tipo de cliente
 			$cliente_tipo = $this->input->post('cliente_tipo');
 			if($cliente_tipo == '1'){
@@ -88,11 +84,13 @@ class Clientes extends CI_Controller
 				$this->form_validation->set_rules('cliente_sobrenome','','required|min_length[5]|max_length[145]');
 				$this->form_validation->set_rules('cliente_cpf','cpf','required|exact_length[14]|is_unique[clientes.cliente_cpf_cnpj]|callback_valida_cpf');
 				$this->form_validation->set_rules('cliente_rg','rg','required|exact_length[12]|is_unique[clientes.cliente_rg_ie]');
+				$this->form_validation->set_rules('cliente_dn','data nasc.','required');
 			}else{
 				$this->form_validation->set_rules('cliente_rs','','required|min_length[3]|max_length[145]');
 				$this->form_validation->set_rules('cliente_nf','','required|min_length[5]|max_length[145]');
 				$this->form_validation->set_rules('cliente_cnpj','cnpj','required|exact_length[18]|callback_valida_cnpj');
 				$this->form_validation->set_rules('cliente_ie','Insc. Est','required|max_length[15]|is_unique[clientes.cliente_rg_ie]');
+				$this->form_validation->set_rules('cliente_dn_ab','data abertura','required');
 			}
 
 
@@ -135,27 +133,35 @@ class Clientes extends CI_Controller
 					], $this->input->post()
 				);
 
-				//echo '<pre>';
-				//print_r($data);
-				//exit();
+
 
 				if($cliente_tipo == 1){
 					$data ['cliente_nome'] =$this->input->post('cliente_nome');
 					$data ['cliente_sobrenome'] =$this->input->post('cliente_sobrenome');
 					$data ['cliente_cpf_cnpj'] =$this->input->post('cliente_cpf');
 					$data ['cliente_rg_ie'] =$this->input->post('cliente_rg');
+					$data ['cliente_dn'] =$this->input->post('cliente_dn');
+
+					$data ['cliente_nome'] = strtoupper($this->input->post('cliente_nome'));
+					$data ['cliente_sobrenome'] = strtoupper($this->input->post('cliente_sobrenome'));
 
 				}else{
 					$data ['cliente_nome'] =$this->input->post('cliente_rs');
 					$data ['cliente_sobrenome'] =$this->input->post('cliente_nf');
 					$data ['cliente_cpf_cnpj'] =$this->input->post('cliente_cnpj');
 					$data ['cliente_rg_ie'] =$this->input->post('cliente_ie');
+					$data ['cliente_dn'] =$this->input->post('cliente_dn_ab');
+
+					$data ['cliente_nome'] = strtoupper($this->input->post('cliente_rs'));
+					$data ['cliente_sobrenome'] = strtoupper($this->input->post('cliente_nf'));
 				}
 
-				$data ['cliente_nome'] = strtoupper($this->input->post('cliente_nome'));
-				$data ['cliente_sobrenome'] = strtoupper($this->input->post('cliente_sobrenome'));
+
 				$data ['cliente_estado'] = strtoupper($this->input->post('cliente_estado'));
 
+				//echo '<pre>';
+				//print_r($data);
+				//exit();
 
 				$data = html_escape($data);
 
@@ -356,6 +362,37 @@ class Clientes extends CI_Controller
         }
 
     }
+
+	public function del($cliente_id = null)
+	{
+		if (!$cliente_id || !$this->core_model->get_by_id('clientes', ['cliente_id' => $cliente_id])) {
+			$this->session->set_flashdata('error', 'Cliente não localizado');
+			redirect('clientes');
+		}else{
+
+			$this->core_model->delete('clientes', ['cliente_id' => $cliente_id]);
+			redirect('clientes');
+		}
+
+		/*
+		if($this->db->table_exists('contas_receber')){
+
+			if($this->core_model->get_by_id('contas_receber', ['conta_receber_cliente_id' => $cliente_id, 'conta_receber_status' => 0])){
+
+				$this->session->set_flashdata('info', 'Solicitação não atendida, pois existem <i class="fas fa-hand-holding-usd"></i>&nbsp;Contas em aberto para esse cliente !!!');
+				redirect('clientes');
+
+			}else {
+
+				$this->core_model->delete('clientes', ['cliente_id' => $cliente_id]);
+
+				$this->core_model->delete('contas_receber', ['conta_receber_cliente_id' => $cliente_id]);
+
+				redirect('clientes');
+			}
+		}
+		*/
+	}
 
 	public function valida_cnpj($cnpj) {
 
