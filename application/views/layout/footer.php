@@ -9,6 +9,8 @@
       </div>
     </div>
 
+	<script src="<?php echo base_url('public/vendors/sweetalert2/sweetalert2.js'); ?>"></script>
+
     <?php if(isset($scripts)): ?>
 
         <?php foreach($scripts as $script): ?>

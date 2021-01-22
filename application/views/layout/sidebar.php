@@ -19,7 +19,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="#"><i class="fa fa-home"></i> Home <span class=""></span></a></li>
+                  <li><a href="<?php echo base_url('home')?>"><i class="fa fa-home"></i> Home <span class=""></span></a></li>
 
                   <li><a><i class="fa fa-shopping-cart"></i> Vendas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -28,7 +28,7 @@
                   </li>
                   <li><a><i class="fa fa-users"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Clientes</a></li>
+                      <li><a href="<?php echo base_url('clientes')?>">Clientes</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-car"></i> Veículos <span class="fa fa-chevron-down"></span></a>
@@ -46,8 +46,8 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-globe"></i> Sistema <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">Usuários</a></li>
-                      <li><a href="projects.html">Empresa</a></li>
+                      <li><a href="<?php echo base_url('users') ?>">Usuários</a></li>
+                      <li><a href="<?php echo base_url('empresa') ?>">Empresa</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
@@ -95,7 +95,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="#"> Profile</a>
-                      <a class="dropdown-item"  href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -144,5 +144,24 @@
             </div>
           </div>
         <!-- /top navigation -->
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body"><h6>Clique em <strong>"Sair"</strong> para encerrar sua sessão atual.</h6></div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-primary" href="<?php echo base_url('login/logout'); ?>">Sair</a>
+                </div>
+            </div>
+            </div>
+        </div>
 
         
