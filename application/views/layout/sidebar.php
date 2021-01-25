@@ -34,6 +34,7 @@
                       <li><a href="<?php echo base_url('clientes')?>">Clientes</a></li>
                       <li><a href="<?php echo base_url('servicos')?>">Serviços</a></li>
                       <li><a href="<?php echo base_url('veiculos')?>">Veículos</a></li>
+                      <li><a href="<?php echo base_url('fornecedores')?>">Fornecedores</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-car"></i> Veículos <span class="fa fa-chevron-down"></span></a>
