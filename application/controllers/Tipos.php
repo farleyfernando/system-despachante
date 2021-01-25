@@ -2,24 +2,24 @@
 
 defined('BASEPATH') or exit('Ação Inválida');
 
-class Servicos extends CI_Controller
+class Tipos extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 
-		if(!$this->ion_auth->logged_in()){
-			$this->session->set_flashdata('info','Sessão encerrada, favor efetuar o login novamente !!!');
+		if (!$this->ion_auth->logged_in()) {
+			$this->session->set_flashdata('info', 'Sessão encerrada, favor efetuar o login novamente !!!');
 			redirect('login');
-
 		}
+
 	}
 
 	public function index()
 	{
 		$data =
 			[
-				'titulo' => 'Serviços Cadastrados',
+				'titulo' => 'Tipos Cadastrados',
 
 				'styles' => [
 					//Bootstrap
@@ -63,22 +63,18 @@ class Servicos extends CI_Controller
 					//Custom Theme Scripts
 					'build/js/custom.min.js',
 				],
-				'servicos' => $this->core_model->get_all('servicos'),
+				'tipos' => $this->core_model->get_all('tipos'),
 			];
 
-			$this->load->view('layout/header', $data);
-			$this->load->view('servicos/index');
-			$this->load->view('layout/footer');
+		$this->load->view('layout/header', $data);
+		$this->load->view('tipos/index');
+		$this->load->view('layout/footer');
 	}
 
 	public function add()
 	{
 
-
-			$this->form_validation->set_rules('servico_nome', 'nome do serviço', 'trim|min_length[3]|max_length[145]|required|callback_nome_check');
-			$this->form_validation->set_rules('servico_preco', 'preço', 'trim|required');
-			$this->form_validation->set_rules('servico_descricao', 'descrição do serviço', 'trim|max_length[700]');
-
+		$this->form_validation->set_rules('tipo_nome', 'nome do tipos', 'trim|min_length[2]|max_length[145]|required|is_unique[tipos.tipo_nome]');
 
 		if($this->form_validation->run()){
 
@@ -88,25 +84,22 @@ class Servicos extends CI_Controller
 
 			$data = elements(
 				[
-					'servico_nome',
-					'servico_preco',
-					'servico_descricao',
-					'servico_ativo'
+					'tipo_nome',
+					'tipo_ativo'
 				], $this->input->post()
 			);
 
-			$data['servico_nome'] = strtoupper($this->input->post('servico_nome'));
-			$data['servico_descricao'] = strtoupper($this->input->post('servico_descricao'));
+			$data ['tipo_nome'] = strtoupper($this->input->post('tipo_nome'));
 
 			$data = html_escape($data);
 
-			$this->core_model->insert('servicos', $data);
-			redirect('servicos');
+			$this->core_model->insert('tipos', $data);
+			redirect('tipos');
 		}else{
 			//erro de validação
 
 			$data = [
-				'titulo' => 'Cadastrar Serviço',
+				'titulo' => 'Cadastrar Tipos',
 				'styles' => [
 					//Bootstrap
 					'vendors/bootstrap/dist/css/bootstrap.min.css',
@@ -137,12 +130,7 @@ class Servicos extends CI_Controller
 					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 					//Custom Theme Scripts
 					'build/js/custom.min.js',
-					//mask
-					'vendors/mask/jquery.mask.min.js',
-					'vendors/mask/app.js',
 				],
-
-
 			];
 
 			// echo '<pre>';
@@ -150,23 +138,22 @@ class Servicos extends CI_Controller
 			// exit();
 
 			$this->load->view('layout/header', $data);
-			$this->load->view('servicos/add');
+			$this->load->view('tipos/add');
 			$this->load->view('layout/footer');
 		}
 
 	}
 
-	public function edit($servico_id = null)
+	public function edit($tipo_id = null)
 	{
-		if(!$servico_id || !$this->core_model->get_by_id('servicos', ['servico_id' => $servico_id])){
+		if(!$tipo_id || !$this->core_model->get_by_id('tipos', ['tipo_id' => $tipo_id])){
 
 			$this->session->set_flashdata('info','Serviço não localizado !!!');
-			redirect('servicos');
+			redirect('tipos');
 		}else{
 
-			$this->form_validation->set_rules('servico_nome', 'nome do serviço', 'trim|min_length[10]|max_length[145]|required|callback_nome_check');
-			$this->form_validation->set_rules('servico_preco', 'preço', 'trim|required');
-			$this->form_validation->set_rules('servico_descricao', 'descrição do serviço', 'trim|max_length[700]');
+			$this->form_validation->set_rules('tipo_nome', 'nome da tipos', 'trim|min_length[2]|max_length[145]|required|callback_nome_check');
+
 		}
 
 		if($this->form_validation->run()){
@@ -177,22 +164,22 @@ class Servicos extends CI_Controller
 
 			$data = elements(
 				[
-					'servico_nome',
-					'servico_preco',
-					'servico_descricao',
-					'servico_ativo'
+					'tipo_nome',
+					'tipo_ativo'
 				], $this->input->post()
 			);
 
+			$data ['tipo_nome'] = strtoupper($this->input->post('tipo_nome'));
+
 			$data = html_escape($data);
 
-			$this->core_model->update('servicos', $data, ['servico_id' => $servico_id]);
-			redirect('servicos');
+			$this->core_model->update('tipos', $data, ['tipo_id' => $tipo_id]);
+			redirect('tipos');
 		}else{
 			//erro de validação
 
 			$data = [
-				'titulo' => 'Atualizar Serviços',
+				'titulo' => 'Atualizar Tipos',
 				'styles' => [
 					//Bootstrap
 					'vendors/bootstrap/dist/css/bootstrap.min.css',
@@ -223,11 +210,9 @@ class Servicos extends CI_Controller
 					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 					//Custom Theme Scripts
 					'build/js/custom.min.js',
-					//mask
-					'vendors/mask/jquery.mask.min.js',
-					'vendors/mask/app.js',
+
 				],
-				'servico' => $this->core_model->get_by_id('servicos',['servico_id' => $servico_id]),
+				'tipos' => $this->core_model->get_by_id('tipos',['tipo_id' => $tipo_id]),
 
 			];
 
@@ -236,17 +221,31 @@ class Servicos extends CI_Controller
 			// exit();
 
 			$this->load->view('layout/header', $data);
-			$this->load->view('servicos/edit');
+			$this->load->view('tipos/edit');
 			$this->load->view('layout/footer');
 		}
 
 	}
-	public function nome_check($servico_nome)
-	{
-		$servico_id = $this->input->post('servico_id');
 
-		if ($this->core_model->get_by_id('servicos', ['servico_nome' => $servico_nome, 'servico_id!=' => $servico_id])) {
-			$this->form_validation->set_message('nome_check', 'Esse nome de serviço já existe');
+	public function del($tipo_id = null)
+	{
+		if (!$tipo_id || !$this->core_model->get_by_id('tipos', ['tipo_id' => $tipo_id])) {
+			$this->session->set_flashdata('error', 'tipos não localizada !!!');
+			redirect('tipos');
+
+		} else {
+
+			$this->core_model->delete('tipos', ['tipo_id' => $tipo_id]);
+			redirect('tipos');
+		}
+	}
+
+	public function nome_check($tipo_nome)
+	{
+		$tipo_id = $this->input->post('tipo_id');
+
+		if ($this->core_model->get_by_id('tipos', ['tipo_nome' => $tipo_nome, 'tipo_id!=' => $tipo_id])) {
+			$this->form_validation->set_message('nome_check', 'Essa tipos já existe');
 
 			return false;
 		} else {

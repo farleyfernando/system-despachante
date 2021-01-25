@@ -68,9 +68,10 @@
                             
                             <div class="clearfix"></div>
                             <div class="mt-3 mb-3" style="float: right;">
-						        <a title="Novo serviço Alt+O" accesskey="O" href="<?php echo base_url('servicos/add');
-						        ?>"><i class="fa fa-user-plus fa-3x"
-																					  style="color:seagreen"></i></a>
+						        <a title="Nova categoria Alt+O" accesskey="O" href="<?php echo base_url('categorias/add'); ?>"
+								   ><i class="fa fa-plus
+						        fa-3x"
+								   style="color:seagreen"></i></a>
 					        </div>
                         </div>
                         <div class="x_content">
@@ -82,35 +83,30 @@
                                 <thead>
                                     <tr>
                                     <th class="text-center">#</th>
-                                    <th>Nome Serviço</th>
-                                    <th class="text-center">Descrição</th>
-                                    <th class="text-center">Valor</th>
+                                    <th class="text-center">categoria</th>
                                     <th class="text-center">Ativo</th>
                                     <th class="text-center no-sort">Ações</th>                                   
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($servicos as $servico) : ?>
+                                    <?php foreach ($categorias as $categoria) : ?>
                                         <tr>
-                                        <td class="text-center"><?php echo $servico->servico_id ?></td>
-                                        <td><?php echo $servico->servico_nome ?></td>
-                                        <td class="text-center"><?php echo $servico->servico_descricao ?></td>
-										<td class="text-center"><?php echo 'R$ '.$servico->servico_preco ?></td>
-
-								        <td class="text-center"><?php echo ($servico->servico_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td>
+                                        <td class="text-center"><?php echo $categoria->categoria_id ?></td>
+                                        <td class="text-center"><?php echo $categoria->categoria_nome ?></td>
+										<td class="text-center"><?php echo ($categoria->categoria_ativa == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td>
                                         <td class="text-center">
-                                            <a title="Editar serviço" href="<?php echo base_url('servicos/edit/'
-													.$servico->servico_id) ?>" data-toggle="tooltip " data-placement="top">
+                                            <a title="Editar categoria" href="<?php echo base_url('categorias/edit/'
+													.$categoria->categoria_id) ?>" data-toggle="tooltip " data-placement="top">
                                             <i class=" fa fa-check"></i></a>
-                                            <a title="Excluir serviço"href="javascript(void)" data-toggle="modal"
-                                                data-target="#servico-<?php echo $servico->servico_id; ?>"><i class="fa
+                                            <a title="Excluir categoria"href="javascript(void)" data-toggle="modal" 
+                                                data-target="#categoria-<?php echo $categoria->categoria_id; ?>"><i class="fa
                                                 fa-close" style="color:red"></i></a>
                     
                                         </td>                               
                                     </tr>
                                     
                                         <!-- Confirma exclusão Modal-->
-                                            <div class="modal fade" id="servico-<?php echo $servico->servico_id; ?>"
+                                            <div class="modal fade" id="categoria-<?php echo $categoria->categoria_id; ?>"
 												 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -120,11 +116,11 @@
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                     </div>
-                                                    <div class="modal-body"><h6>Para excluir o serviço selecionado
-															clique em <strong>"Confirmar" !</strong> </h6></div>
+                                                    <div class="modal-body"><h6>Para excluir a categoria selecionado clique
+															em <strong>"Confirmar" !</strong> </h6></div>
                                                     <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                                    <a class="btn btn-danger" href="<?php echo base_url('servicos/del/'.$servico->servico_id); ?>">Confirmar</a>
+                                                    <a class="btn btn-danger" href="<?php echo base_url('categorias/del/'.$categoria->categoria_id); ?>">Confirmar</a>
                                                     </div>
                                                 </div>
                                                 </div>

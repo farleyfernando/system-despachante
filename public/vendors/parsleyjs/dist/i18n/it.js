@@ -8,8 +8,8 @@ Parsley.addMessages('it', {
     url:          "Questo valore deve essere un URL valido.",
     number:       "Questo valore deve essere un numero valido.",
     integer:      "Questo valore deve essere un numero valido.",
-    digits:       "Questo valore deve essere di tipo numerico.",
-    alphanum:     "Questo valore deve essere di tipo alfanumerico."
+    digits:       "Questo valore deve essere di tipos numerico.",
+    alphanum:     "Questo valore deve essere di tipos alfanumerico."
   },
   notblank:       "Questo valore non deve essere vuoto.",
   required:       "Questo valore è richiesto.",

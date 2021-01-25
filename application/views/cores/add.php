@@ -55,7 +55,7 @@
 					<!-- ============================================================== -->
 
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="<?php echo base_url('servicos')?>">Serviços</a></li>
+						<li class="breadcrumb-item"><a href="<?php echo base_url('cores')?>">Cores</a></li>
 						<li class="breadcrumb-item active" aria-current="page">
 							<?php echo $titulo;?>
 						</li>
@@ -68,50 +68,26 @@
 					
 					<br/>
 					<form class="form-label-left input_mask" method="post">
-						<p><strong><i class="fa fa-clock-o"></i>&nbsp; Última atualização: </strong><?php echo
-							formata_data_banco_com_hora($servico->servico_data_alteracao) ?></p>
-
 							<fieldset class="mt-4 mb-2 p-2">
 								<legend class="ml-3" style="font-size:17px; width: initial"><i class="fa
-								fa-plug"></i>&nbsp;Dados do Serviço&nbsp;</legend>
+								fa-xing"></i>&nbsp;Dados da cor&nbsp;</legend>
 							<div class="form-group row">
-								<div class="col-md-4">
-									<label class="pl-2">Nome do Serviço <span>*</span>
+								<div class="col-md-6">
+									<label class="pl-2">Nome Cor <span>*</span>
 								</label>
-									<input type="text" class="form-control" name="servico_nome" value="<?php echo
-									$servico->servico_nome; ?>" placeholder="Nome serviço">
-									<?php echo form_error('servico_nome','<small class="form-text text-danger">','</small>'); ?>
+									<input type="text" class="form-control" name="cor_nome" value="<?php echo
+									set_value('cor_nome'); ?>" placeholder="Nome cor">
+									<?php echo form_error('cor_nome','<small class="form-text text-danger">','</small>'); ?>
 								</div>
-								<div class="col-md-4">
-									<label class="pl-2">Valor do Serviço <span>*</span>
-									</label>
-									<input type="text" name="servico_preco" class="form-control money" value="<?php echo
-									$servico->servico_preco; ?>" placeholder="Valor Serviço">
-									<?php echo form_error('servico_preco','<small class="form-text text-danger">','</small>'); ?>
-								</div>
-								<div class="col-md-4">
-									<label class="pl-2">Servico Ativo</label>
-									<select class="form-control" name="servico_ativo">
-										<option value="0" <?php echo ($servico->servico_ativo == 0) ? 'selected' : '';
-										?>>Não</option>
-										<option value="1" <?php echo ($servico->servico_ativo == 1) ? 'selected' : '';
-										?>>Sim</option>
+								<div class="col-md-6">
+									<label class="pl-2">Cor Ativa</label>
+									<select class="form-control" name="cor_ativo">
+										<option value="1">Sim</option>
+										<option value="0">Não</option>
 									</select>
 								</div>
 							</div>
-							<div class="form-group row">
-								<div class="col-md-12">
-									<label>Descriçao do Serviço</label>
-									<textarea type="text" class="form-control" name="servico_descricao"
-											  style="max-height: 100px;min-width: 100px" placeholder="Descrição
-											  serviço"><?php echo $servico->servico_descricao; ?></textarea>
-									<?php echo form_error('servico_descricao', '<small class="form-text text-danger">', '</small>'); ?>
-								</div>
-							</div>
 						</fieldset>
-
-
-						<input type="hidden" name="servico_id" value="<?php echo $servico->servico_id; ?>">
 						</div>
 						<div class="clearfix"></div>
 						<div class="ln_solid"></div>
@@ -119,7 +95,7 @@
 					<div class="col-md-9 col-sm-9">
 						<button type="submit" class="btn btn-outline-success"><i class="fa fa-paper-plane-o"
 							></i> &nbsp;Enviar</button>
-						<a href="<?php echo base_url('servicos'); ?>"><button type="button" class="btn
+						<a href="<?php echo base_url('cores'); ?>"><button type="button" class="btn
 												btn-outline-primary"><i class="fa fa-mail-reply-all"
 								></i> &nbsp;Voltar</button></a>
 					</div>

@@ -68,7 +68,8 @@
                             
                             <div class="clearfix"></div>
                             <div class="mt-3 mb-3" style="float: right;">
-						        <a href="<?php echo base_url('clientes/add'); ?>"><i class="fa fa-user-plus fa-3x" style="color:seagreen"></i></a>
+						        <a title="Novo cliente Alt+O" accesskey="O" href="<?php echo base_url('clientes/add');
+						        ?>"><i class="fa fa-user-plus fa-3x" style="color:seagreen"></i></a>
 					        </div>
                         </div>
                         <div class="x_content">
@@ -80,7 +81,7 @@
                                 <thead>
                                     <tr>
                                     <th class="text-center">ID</th>
-                                    <th>Nome</th>
+                                    <th class="text-center">Nome</th>
                                     <th class="text-center">CPF/CNPJ</th>
                                     <th class="text-center">Tipo Cliente</th>
                                     <th class="text-center">Ativo</th>
@@ -91,7 +92,7 @@
                                     <?php foreach ($clientes as $client) : ?>
                                         <tr>
                                         <td class="text-center"><?php echo $client->cliente_id ?></td>
-                                        <td><?php echo $client->cliente_nome ?></td>
+                                        <td><?php echo $client->cliente_nome . ' ' . $client->cliente_sobrenome ?></td>
                                         <td class="text-center"><?php echo $client->cliente_cpf_cnpj ?></td>
 
                                         <td class="text-center pr-1"><?php echo ($client->cliente_tipo == 2 ? '<span class="badge badge-dark btn-sm">PJ</span>' : '<span class="badge badge-warning btn-sm">PF</span>') ?></td>
@@ -117,7 +118,8 @@
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                     </div>
-                                                    <div class="modal-body"><h6>Para excluir o usuário selecionado clique em <strong>"Confirmar" !</strong> </h6></div>
+                                                    <div class="modal-body"><h6>Para excluir o cliente selecionado
+															clique em <strong>"Confirmar" !</strong> </h6></div>
                                                     <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                                                     <a class="btn btn-danger" href="<?php echo base_url('clientes/del/'.$client->cliente_id); ?>">Confirmar</a>

@@ -68,7 +68,8 @@
                             
                             <div class="clearfix"></div>
                             <div class="mt-3 mb-3" style="float: right;">
-						        <a href="<?php echo base_url('users/add'); ?>"><i class="fa fa-user-plus fa-3x" style="color:seagreen"></i></a>
+						        <a title="Novo usuário Alt+O" accesskey="O"href="<?php echo base_url('users/add');
+						        ?>"><i class="fa fa-user-plus fa-3x" style="color:seagreen"></i></a>
 					        </div>
                         </div>
                         <div class="x_content">

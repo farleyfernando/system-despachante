@@ -2,24 +2,24 @@
 
 defined('BASEPATH') or exit('Ação Inválida');
 
-class Servicos extends CI_Controller
+class Categorias extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 
-		if(!$this->ion_auth->logged_in()){
-			$this->session->set_flashdata('info','Sessão encerrada, favor efetuar o login novamente !!!');
+		if (!$this->ion_auth->logged_in()) {
+			$this->session->set_flashdata('info', 'Sessão encerrada, favor efetuar o login novamente !!!');
 			redirect('login');
-
 		}
+
 	}
 
 	public function index()
 	{
 		$data =
 			[
-				'titulo' => 'Serviços Cadastrados',
+				'titulo' => 'Categorias Cadastradas',
 
 				'styles' => [
 					//Bootstrap
@@ -63,22 +63,18 @@ class Servicos extends CI_Controller
 					//Custom Theme Scripts
 					'build/js/custom.min.js',
 				],
-				'servicos' => $this->core_model->get_all('servicos'),
+				'categorias' => $this->core_model->get_all('categorias'),
 			];
 
-			$this->load->view('layout/header', $data);
-			$this->load->view('servicos/index');
-			$this->load->view('layout/footer');
+		$this->load->view('layout/header', $data);
+		$this->load->view('categorias/index');
+		$this->load->view('layout/footer');
 	}
 
 	public function add()
 	{
 
-
-			$this->form_validation->set_rules('servico_nome', 'nome do serviço', 'trim|min_length[3]|max_length[145]|required|callback_nome_check');
-			$this->form_validation->set_rules('servico_preco', 'preço', 'trim|required');
-			$this->form_validation->set_rules('servico_descricao', 'descrição do serviço', 'trim|max_length[700]');
-
+			$this->form_validation->set_rules('categoria_nome', 'nome da categoria', 'trim|min_length[2]|max_length[145]|required|is_unique[categorias.categoria_nome]');
 
 		if($this->form_validation->run()){
 
@@ -88,25 +84,22 @@ class Servicos extends CI_Controller
 
 			$data = elements(
 				[
-					'servico_nome',
-					'servico_preco',
-					'servico_descricao',
-					'servico_ativo'
+					'categoria_nome',
+					'categoria_ativa'
 				], $this->input->post()
 			);
 
-			$data['servico_nome'] = strtoupper($this->input->post('servico_nome'));
-			$data['servico_descricao'] = strtoupper($this->input->post('servico_descricao'));
+			$data ['categoria_nome'] = strtoupper($this->input->post('categoria_nome'));
 
 			$data = html_escape($data);
 
-			$this->core_model->insert('servicos', $data);
-			redirect('servicos');
+			$this->core_model->insert('categorias', $data);
+			redirect('categorias');
 		}else{
 			//erro de validação
 
 			$data = [
-				'titulo' => 'Cadastrar Serviço',
+				'titulo' => 'Cadastrar Categorias',
 				'styles' => [
 					//Bootstrap
 					'vendors/bootstrap/dist/css/bootstrap.min.css',
@@ -137,12 +130,7 @@ class Servicos extends CI_Controller
 					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 					//Custom Theme Scripts
 					'build/js/custom.min.js',
-					//mask
-					'vendors/mask/jquery.mask.min.js',
-					'vendors/mask/app.js',
 				],
-
-
 			];
 
 			// echo '<pre>';
@@ -150,23 +138,22 @@ class Servicos extends CI_Controller
 			// exit();
 
 			$this->load->view('layout/header', $data);
-			$this->load->view('servicos/add');
+			$this->load->view('categorias/add');
 			$this->load->view('layout/footer');
 		}
 
 	}
 
-	public function edit($servico_id = null)
+	public function edit($categoria_id = null)
 	{
-		if(!$servico_id || !$this->core_model->get_by_id('servicos', ['servico_id' => $servico_id])){
+		if(!$categoria_id || !$this->core_model->get_by_id('categorias', ['categoria_id' => $categoria_id])){
 
 			$this->session->set_flashdata('info','Serviço não localizado !!!');
-			redirect('servicos');
+			redirect('categorias');
 		}else{
 
-			$this->form_validation->set_rules('servico_nome', 'nome do serviço', 'trim|min_length[10]|max_length[145]|required|callback_nome_check');
-			$this->form_validation->set_rules('servico_preco', 'preço', 'trim|required');
-			$this->form_validation->set_rules('servico_descricao', 'descrição do serviço', 'trim|max_length[700]');
+			$this->form_validation->set_rules('categoria_nome', 'nome da categoria', 'trim|min_length[2]|max_length[145]|required|callback_nome_check');
+
 		}
 
 		if($this->form_validation->run()){
@@ -177,22 +164,22 @@ class Servicos extends CI_Controller
 
 			$data = elements(
 				[
-					'servico_nome',
-					'servico_preco',
-					'servico_descricao',
-					'servico_ativo'
+					'categoria_nome',
+					'categoria_ativa'
 				], $this->input->post()
 			);
 
+			$data ['categoria_nome'] = strtoupper($this->input->post('categoria_nome'));
+
 			$data = html_escape($data);
 
-			$this->core_model->update('servicos', $data, ['servico_id' => $servico_id]);
-			redirect('servicos');
+			$this->core_model->update('categorias', $data, ['categoria_id' => $categoria_id]);
+			redirect('categorias');
 		}else{
 			//erro de validação
 
 			$data = [
-				'titulo' => 'Atualizar Serviços',
+				'titulo' => 'Atualizar categoria',
 				'styles' => [
 					//Bootstrap
 					'vendors/bootstrap/dist/css/bootstrap.min.css',
@@ -223,11 +210,9 @@ class Servicos extends CI_Controller
 					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 					//Custom Theme Scripts
 					'build/js/custom.min.js',
-					//mask
-					'vendors/mask/jquery.mask.min.js',
-					'vendors/mask/app.js',
+
 				],
-				'servico' => $this->core_model->get_by_id('servicos',['servico_id' => $servico_id]),
+				'categoria' => $this->core_model->get_by_id('categorias',['categoria_id' => $categoria_id]),
 
 			];
 
@@ -236,17 +221,31 @@ class Servicos extends CI_Controller
 			// exit();
 
 			$this->load->view('layout/header', $data);
-			$this->load->view('servicos/edit');
+			$this->load->view('categorias/edit');
 			$this->load->view('layout/footer');
 		}
 
 	}
-	public function nome_check($servico_nome)
-	{
-		$servico_id = $this->input->post('servico_id');
 
-		if ($this->core_model->get_by_id('servicos', ['servico_nome' => $servico_nome, 'servico_id!=' => $servico_id])) {
-			$this->form_validation->set_message('nome_check', 'Esse nome de serviço já existe');
+	public function del($categoria_id = null)
+	{
+		if (!$categoria_id || !$this->core_model->get_by_id('categorias', ['categoria_id' => $categoria_id])) {
+			$this->session->set_flashdata('error', 'categoria não localizada !!!');
+			redirect('categorias');
+
+		} else {
+
+			$this->core_model->delete('categorias', ['categoria_id' => $categoria_id]);
+			redirect('categorias');
+		}
+	}
+
+	public function nome_check($categoria_nome)
+	{
+		$categoria_id = $this->input->post('categoria_id');
+
+		if ($this->core_model->get_by_id('categorias', ['categoria_nome' => $categoria_nome, 'categoria_id!=' => $categoria_id])) {
+			$this->form_validation->set_message('nome_check', 'Essa categoria já existe');
 
 			return false;
 		} else {

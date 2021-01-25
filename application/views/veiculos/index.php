@@ -68,9 +68,9 @@
                             
                             <div class="clearfix"></div>
                             <div class="mt-3 mb-3" style="float: right;">
-						        <a title="Novo serviço Alt+O" accesskey="O" href="<?php echo base_url('servicos/add');
-						        ?>"><i class="fa fa-user-plus fa-3x"
-																					  style="color:seagreen"></i></a>
+						        <a title="Novo veiculo Alt+O" accesskey="O" href="<?php echo base_url('veiculos/add');
+						        ?>"><i class="fa fa-plus fa-2x" style="color:#50ab78"></i>&nbsp;<i class="fa fa-car
+						        fa-2x" style="color:#50ab78"></i></a>
 					        </div>
                         </div>
                         <div class="x_content">
@@ -81,36 +81,41 @@
                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                    <th class="text-center">#</th>
-                                    <th>Nome Serviço</th>
-                                    <th class="text-center">Descrição</th>
-                                    <th class="text-center">Valor</th>
-                                    <th class="text-center">Ativo</th>
-                                    <th class="text-center no-sort">Ações</th>                                   
+                                    <th class="text-center pr-2">Placa</th>
+                                    <th class="text-center pr-2">Proprietário</th>
+                                    <th class="text-center pr-2">Tipo</th>
+                                    <th class="text-center pr-2">Chassi</th>
+                                    <th class="text-center pr-2">Cor</th>
+                                    <th class="text-center pr-2">Renavam</th>
+                                    <th class="text-center pr-2">Data Venc. DUT</th>
+                                    <th class="text-center pr-2">Açoes</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($servicos as $servico) : ?>
+                                    <?php foreach ($veiculos as $veiculo) : ?>
                                         <tr>
-                                        <td class="text-center"><?php echo $servico->servico_id ?></td>
-                                        <td><?php echo $servico->servico_nome ?></td>
-                                        <td class="text-center"><?php echo $servico->servico_descricao ?></td>
-										<td class="text-center"><?php echo 'R$ '.$servico->servico_preco ?></td>
+                                        <td class="text-center"><?php echo $veiculo->veiculo_placa ?></td>
+                                        <td class="text-center"><?php echo $veiculo->veiculo_cliente ?></td>
+                                        <td class="text-center"><?php echo $veiculo->veiculo_tipo ?></td>
+                                        <td class="text-center"><?php echo $veiculo->veiculo_chassi ?></td>
+                                        <td class="text-center"><?php echo $veiculo->veiculo_cor ?></td>
+                                        <td class="text-center"><?php echo $veiculo->veiculo_renavam ?></td>
+                                        <td class="text-center"><?php echo formata_data_banco_sem_hora($veiculo->veiculo_venc_dut) ?></td>
 
-								        <td class="text-center"><?php echo ($servico->servico_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-secondary btn-sm">Não</span>') ?></td>
-                                        <td class="text-center">
-                                            <a title="Editar serviço" href="<?php echo base_url('servicos/edit/'
-													.$servico->servico_id) ?>" data-toggle="tooltip " data-placement="top">
+										<td class="text-center">
+                                            <a title="Editar veiculo" href="<?php echo base_url('veiculos/edit/'
+													.$veiculo->veiculo_id) ?>" data-toggle="tooltip " data-placement="top">
                                             <i class=" fa fa-check"></i></a>
-                                            <a title="Excluir serviço"href="javascript(void)" data-toggle="modal"
-                                                data-target="#servico-<?php echo $servico->servico_id; ?>"><i class="fa
+                                            <a title="Excluir veiculo"href="javascript(void)" data-toggle="modal" 
+                                                data-target="#veiculo-<?php echo $veiculo->veiculo_id; ?>"><i class="fa
                                                 fa-close" style="color:red"></i></a>
                     
                                         </td>                               
                                     </tr>
                                     
                                         <!-- Confirma exclusão Modal-->
-                                            <div class="modal fade" id="servico-<?php echo $servico->servico_id; ?>"
+                                            <div class="modal fade" id="veiculo-<?php echo $veiculo->veiculo_id; ?>"
 												 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -120,11 +125,11 @@
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                     </div>
-                                                    <div class="modal-body"><h6>Para excluir o serviço selecionado
-															clique em <strong>"Confirmar" !</strong> </h6></div>
+                                                    <div class="modal-body"><h6>Para excluir a veiculo selecionado clique
+															em <strong>"Confirmar" !</strong> </h6></div>
                                                     <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                                    <a class="btn btn-danger" href="<?php echo base_url('servicos/del/'.$servico->servico_id); ?>">Confirmar</a>
+                                                    <a class="btn btn-danger" href="<?php echo base_url('veiculos/del/'.$veiculo->veiculo_id); ?>">Confirmar</a>
                                                     </div>
                                                 </div>
                                                 </div>

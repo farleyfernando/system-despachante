@@ -79,7 +79,7 @@ class Clientes extends CI_Controller
 	public function add()
 	{
 
-			//verficação tipo de cliente
+			//verficação tipos de cliente
 			$cliente_tipo = $this->input->post('cliente_tipo');
 			if($cliente_tipo == '1'){
 				$this->form_validation->set_rules('cliente_nome','','required|min_length[3]|max_length[145]');
@@ -210,7 +210,7 @@ class Clientes extends CI_Controller
 						//mask
 						'vendors/mask/jquery.mask.min.js',
 						'vendors/mask/app.js',
-						//mesclar tipo de cliente PF & PJ
+						//mesclar tipos de cliente PF & PJ
 						'src/js/clientes.js',
 					],
 
@@ -236,11 +236,11 @@ class Clientes extends CI_Controller
         }else{
         
 
-            $this->form_validation->set_rules('cliente_nome','razão social','required|min_length[5]|max_length[145]');
-            $this->form_validation->set_rules('cliente_sobrenome','nome fantasia','required|min_length[5]|max_length[145]');
+            $this->form_validation->set_rules('cliente_nome','','required|min_length[3]|max_length[145]');
+            $this->form_validation->set_rules('cliente_sobrenome','','required|min_length[5]|max_length[145]');
             $this->form_validation->set_rules('cliente_dn','data nasc.','required');
 
-            //verficação tipo de cliente
+            //verficação tipos de cliente
 			$cliente_tipo = $this->input->post('cliente_tipo');
 			if($cliente_tipo == '1'){
 				$this->form_validation->set_rules('cliente_cpf','cpf','required|exact_length[14]|callback_valida_cpf');

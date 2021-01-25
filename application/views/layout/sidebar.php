@@ -1,5 +1,8 @@
 <div class="clearfix"></div>
 
+			<!--trazer usuário atual edição de perfil e colocar username-->
+			<?php $user = $this->ion_auth->user()->row(); ?>
+
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
@@ -7,7 +10,7 @@
               </div>
               <div class="profile_info">
                 <span>Bem-vindo,</span>
-                <h2>John Doe</h2>
+                <h2><?php echo $user->username; ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -26,17 +29,20 @@
                       <li><a href="#">Serviços</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-users"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-plus-square"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('clientes')?>">Clientes</a></li>
                       <li><a href="<?php echo base_url('servicos')?>">Serviços</a></li>
+                      <li><a href="<?php echo base_url('veiculos')?>">Veículos</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-car"></i> Veículos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Marcas</a></li>
-                      <li><a href="#">Modelo</a></li>
-                      <li><a href="#">Tipo</a></li>
+                      <li><a href="<?php echo base_url('categorias')?>">Categorias</a></li>
+                      <li><a href="<?php echo base_url('cores')?>">Cores</a></li>
+                      <li><a href="<?php echo base_url('tipos')?>"">Tipos</a></li>
+                      <li><a href="<?php echo base_url('combustivel')?>"">Combustíveis</a></li>
+					  <li><a href="<?php echo base_url('especies')?>"">Espécies</a></li>
                     </ul>
                   </li>  
                 </ul>
@@ -93,11 +99,13 @@
                 <nav class="nav navbar-nav">
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
+
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="<?php echo base_url('public/images/img.jpg')?>" alt="">John Doe
+                      <img src="<?php echo base_url('public/images/img.jpg')?>" alt=""><?php echo $user->username; ?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="#"> Profile</a>
+
+                      <a class="dropdown-item"  href="<?php  echo base_url('users/edit/'.$this->session->userdata('user_id'));?>">Perfil</a>
                       <a class="dropdown-item"  href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>

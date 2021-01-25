@@ -85,9 +85,11 @@
 						<div class="ln_solid"></div>
 						<div class="form-group row">
 							<div class="col-md-9 col-sm-9">
-								<button type="submit" class="btn btn-outline-success">Enviar</button>
+								<button type="submit" class="btn btn-outline-success"><i class="fa fa-paper-plane-o"
+									></i> &nbsp;Enviar</button>
 								<a href="<?php echo base_url('users'); ?>"><button type="button" class="btn
-								btn-outline-primary">Voltar</button></a>
+												btn-outline-primary"><i class="fa fa-mail-reply-all"
+										></i> &nbsp;Voltar</button></a>
 							</div>
 						</div>
 

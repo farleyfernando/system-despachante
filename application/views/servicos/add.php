@@ -107,13 +107,15 @@
 						</div>
 						<div class="clearfix"></div>
 						<div class="ln_solid"></div>
-						<div class="form-group row">
-							<div class="col-md-9 col-sm-9">
-								<button type="submit" class="btn btn-outline-success">Enviar</button>
-								<a href="<?php echo base_url('servicos'); ?>"><button type="button" class="btn
-								btn-outline-primary">Voltar</button></a>
-							</div>
-						</div>
+				<div class="form-group row">
+					<div class="col-md-9 col-sm-9">
+						<button type="submit" class="btn btn-outline-success"><i class="fa fa-paper-plane-o"
+							></i> &nbsp;Enviar</button>
+						<a href="<?php echo base_url('servicos'); ?>"><button type="button" class="btn
+												btn-outline-primary"><i class="fa fa-mail-reply-all"
+								></i> &nbsp;Voltar</button></a>
+					</div>
+				</div>
 					</form>
 				</div>
 			</div>
