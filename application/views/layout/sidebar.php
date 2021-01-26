@@ -45,8 +45,15 @@
                       <li><a href="<?php echo base_url('combustivel')?>"">Combustíveis</a></li>
 					  <li><a href="<?php echo base_url('especies')?>"">Espécies</a></li>
                     </ul>
-                  </li>  
-                </ul>
+                  </li>
+					<li><a><i class="fa fa-dollar"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+						<ul class="nav child_menu">
+							<li><a href="<?php echo base_url('pagar')?>">Contas à Pagar</a></li>
+							<li><a href="<?php echo base_url('receber')?>">Contas à Receber</a></li>
+
+						</ul>
+					</li>
+				</ul>
               </div>
               <!-- MODULO CONFIG -->
               <div class="menu_section">

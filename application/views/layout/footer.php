@@ -10,6 +10,7 @@
     </div>
 
 	<script src="<?php echo base_url('public/vendors/sweetalert2/sweetalert2.js'); ?>"></script>
+	<script src="<?php echo base_url('public/build/js/util.js'); ?>"></script>
 
     <?php if(isset($scripts)): ?>
 

@@ -286,8 +286,8 @@
 								<div class="col-md-4">
 									<label class="pl-2">Data Venc. DUT <span>*</span></label>
 									<input type="date" class="form-control" name="veiculo_venc_dut" value="<?php
-									echo formata_data_banco_sem_hora($veiculo->veiculo_venc_dut); ?>"
-										   placeholder="Data Venc. DUT">
+									echo $veiculo->veiculo_venc_dut; ?>"
+										   placeholder="">
 									<?php echo form_error('veiculo_venc_dut','<small class="form-text 
 								text-danger">','</small>'); ?>
 								</div>
@@ -303,8 +303,8 @@
 									<div class="col-md-4">
 										<label class="pl-2">Data Emissão CRV</label>
 										<input type="date" class="form-control" name="veiculo_dte_crv" value="<?php
-										echo formata_data_banco_sem_hora($veiculo->veiculo_dte_crv); ?>"
-											   placeholder="Data Emissão CRV">
+										echo $veiculo->veiculo_dte_crv; ?>"
+											   placeholder="">
 										<?php echo form_error('veiculo_dte_crv','<small class="form-text 
 							text-danger">','</small>'); ?>
 									</div>
