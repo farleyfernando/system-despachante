@@ -26,7 +26,7 @@
 
                   <li><a><i class="fa fa-desktop"></i> Serviços <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="os">Recibo</a></li>
+                      <li><a href="<?php echo base_url('os')?>">Recibos</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-plus-square"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
@@ -51,6 +51,14 @@
 						<ul class="nav child_menu">
 							<li><a href="<?php echo base_url('pagar')?>">Contas à Pagar</a></li>
 							<li><a href="<?php echo base_url('receber')?>">Contas à Receber</a></li>
+
+						</ul>
+					</li>
+					<li><a><i class="fa fa-line-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+						<ul class="nav child_menu">
+							<li><a href="<?php echo base_url('relatorios/pagar')?>">Contas à Pagar</a></li>
+							<li><a href="<?php echo base_url('relatorios/receber')?>">Contas à Receber</a></li>
+							<li><a href="<?php echo base_url('relatorios/receitas')?>">Receitas</a></li>
 
 						</ul>
 					</li>
