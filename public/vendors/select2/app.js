@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
     $('.contas_receber').select2({
-        placeholder: "Nome...",
+        placeholder: "Informe o Nome",
         allowClear: true,
         "language": {
             "noResults": function() {

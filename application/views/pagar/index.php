@@ -23,7 +23,7 @@
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong><i class="far fa-smile-wink"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+                                <strong><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -36,7 +36,7 @@
                             <div class="row mb-5">
                             <div class="col-md-12 ml-2">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+                                <strong><i class="fa fa-warning"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -49,7 +49,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                            <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+                                            <strong><i class="fa fa-warning"></i>&nbsp;&nbsp;<?php echo $message
+												?></strong>
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -150,7 +151,7 @@
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                     </div>
-                                                    <div class="modal-body"><h6>Para excluir a contas_pagar selecionado clique
+                                                    <div class="modal-body"><h6>Para excluir a conta selecionada clique
 															em <strong>"Confirmar" !</strong> </h6></div>
                                                     <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>

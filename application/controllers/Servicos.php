@@ -164,7 +164,7 @@ class Servicos extends CI_Controller
 			redirect('servicos');
 		}else{
 
-			$this->form_validation->set_rules('servico_nome', 'nome do serviço', 'trim|min_length[10]|max_length[145]|required|callback_nome_check');
+			$this->form_validation->set_rules('servico_nome', 'nome do serviço', 'trim|min_length[3]|max_length[145]|required|callback_nome_check');
 			$this->form_validation->set_rules('servico_preco', 'preço', 'trim|required');
 			$this->form_validation->set_rules('servico_descricao', 'descrição do serviço', 'trim|max_length[700]');
 		}

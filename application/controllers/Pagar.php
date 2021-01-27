@@ -272,4 +272,23 @@ class Pagar extends CI_Controller
 			}
 		}
 	}
+
+	public function del($conta_pagar_id = null){
+
+		if(!$conta_pagar_id || !$this->core_model->get_by_id('contas_pagar', ['conta_pagar_id' => $conta_pagar_id])){
+
+			$this->session->set_flashdata('error', 'Conta não localizada !!!');
+			redirect('pagar');
+
+		}elseif($this->core_model->get_by_id('contas_pagar', ['conta_pagar_id' => $conta_pagar_id, 'conta_pagar_status' => 0])){
+
+			$this->session->set_flashdata('info', 'Solicitação não atendida, conta em aberto !!!');
+			redirect('pagar');
+
+		}else{
+
+			$this->core_model->delete('contas_pagar', ['conta_pagar_id' => $conta_pagar_id]);
+			redirect('pagar');
+		}
+	}
 }

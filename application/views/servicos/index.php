@@ -19,44 +19,45 @@
                 <!--                    MENSAGENS AO USUARIO                        -->
                 <!-- ============================================================== -->
 
-                <?php if($message = $this->session->flashdata('sucesso')) : ?>
-                            <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong><i class="far fa-smile-wink"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>                
-                            </div>
-                            </div>
-                        <?php endif ?>
+							<?php if($message = $this->session->flashdata('sucesso')) : ?>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="alert alert-success alert-dismissible fade show" role="alert">
+											<strong><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							<?php endif ?>
 
-                        <?php if($message = $this->session->flashdata('error')) : ?>
-                            <div class="row mb-5">
-                            <div class="col-md-12 ml-2">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>                
-                            </div>
-                            </div>
-                        <?php endif ?>
+							<?php if($message = $this->session->flashdata('error')) : ?>
+								<div class="row mb-5">
+									<div class="col-md-12 ml-2">
+										<div class="alert alert-danger alert-dismissible fade show" role="alert">
+											<strong><i class="fa fa-warning"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							<?php endif ?>
 
-                            <?php if($message = $this->session->flashdata('info')) : ?>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                            <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;<?php echo $message ?></strong>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif ?>
+							<?php if($message = $this->session->flashdata('info')) : ?>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="alert alert-info alert-dismissible fade show" role="alert">
+											<strong><i class="fa fa-warning"></i>&nbsp;&nbsp;<?php echo $message
+												?></strong>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							<?php endif ?>
                 <!-- ============================================================== -->
                 <!--                         breadcrumb                             -->
                 <!-- ============================================================== -->
@@ -115,7 +116,9 @@
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir?</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que
+														deseja excluir?
+														.</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>

@@ -10,7 +10,7 @@
               </div>
               <div class="profile_info">
                 <span>Bem-vindo,</span>
-                <h2><?php echo $user->username; ?></h2>
+                <h2>FFSoft</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -24,9 +24,9 @@
                 <ul class="nav side-menu">
                   <li><a href="<?php echo base_url('home')?>"><i class="fa fa-home"></i> Home <span class=""></span></a></li>
 
-                  <li><a><i class="fa fa-shopping-cart"></i> Vendas <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-desktop"></i> Serviços <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Serviços</a></li>
+                      <li><a href="os">Recibo</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-plus-square"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
@@ -35,6 +35,7 @@
                       <li><a href="<?php echo base_url('servicos')?>">Serviços</a></li>
                       <li><a href="<?php echo base_url('veiculos')?>">Veículos</a></li>
                       <li><a href="<?php echo base_url('fornecedores')?>">Fornecedores</a></li>
+					  <li><a href="<?php echo base_url('pag')?>">Formas de Pgto</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-car"></i> Veículos <span class="fa fa-chevron-down"></span></a>
@@ -109,7 +110,7 @@
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
 
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="<?php echo base_url('public/images/img.jpg')?>" alt=""><?php echo $user->username; ?>
+                      <img src="<?php echo base_url('public/images/img.jpg')?>" alt="">FFSoft
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
 
