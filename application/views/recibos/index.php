@@ -69,7 +69,7 @@
                             
                             <div class="clearfix"></div>
                             <div class="mt-3 mb-3" style="float: right;">
-						        <a title="Nova os Alt+O" accesskey="O" href="<?php echo base_url('os/add'); ?>"
+						        <a title="Nova os Alt+O" accesskey="O" href="<?php echo base_url('recibos/add'); ?>"
 								   ><i class="fa fa-plus
 						        fa-3x"
 								   style="color:seagreen"></i></a>
@@ -88,57 +88,31 @@
                                     <th class="text-center">Cliente</th>
                                     <th class="text-center pr-1">Placa</th>
 									<th class="text-center" style="padding-right: 1rem;">Valor Total</th>
-									<th class="text-center pr-1">Status Ordem</th>
                                     <th class="text-center no-sort" style="padding-right: 1rem;">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($ordens_servicos as $os) : ?>
+                                    <?php foreach ($recibos_servicos as $recibo) : ?>
                                         <tr>
-                                        <td class="text-center"><?php echo $os->ordem_servico_id ?></td>
+                                        <td class="text-center"><?php echo $recibo->recibo_servico_id ?></td>
 										<td class="text-center"><?php echo formata_data_banco_com_hora
-											($os->ordem_servico_data_emissao) ?></td>
-										<td><?php echo $os->recibo_nome_cliente ?></td>
-										<td class="text-center"><?php echo $os->ordem_placa ?></td>
-										<td class="text-center pr-3"><?php echo 'R$&nbsp;'.$os->ordem_servico_valor_total ?></td>
-
-										<?php
-
-										if($os->ordem_servico_status == 'CONCLUIDO'){
-
-											echo '<td class="text-center"><span class="badge badge-success btn-sm">CONCLUÍDO</span></td>';
-
-										}elseif($os->ordem_servico_status == 'REAGENDADO'){
-
-											echo '<td class="text-center"><span class="badge badge-info btn-sm">REAGENDA PELO ESCRITÓRIO</span></td>';
-
-										}elseif($os->ordem_servico_status == 'CANCELADO'){
-
-											echo '<td class="text-center"><span class="badge badge-danger btn-sm">CANCELADO PELO CLIENTE</span></td>';
-
-										}elseif($os->ordem_servico_status == 'AGENDAMENTO'){
-
-											echo '<td class="text-center"><span class="badge badge-warning btn-sm text-gray-900">AGENDAMENTO REALIZADO</span></td>';
-
-										}elseif($os->ordem_servico_status == 'RETIRADA'){
-
-											echo '<td class="text-center"><span class="badge badge-warning btn-sm text-gray-900">AGUARDANDO RETIRADA DOC</span></td>';
-
-										}else{
-											echo '<td class="text-center"><span class="badge badge-dark btn-sm">AGUARDANDO AGENDAMENTO</span></td>';
-										}
-
-										?>
+											($recibo->recibo_servico_data_emissao) ?></td>
+										<td><?php echo $recibo->recibo_nome_cliente ?></td>
+										<td class="text-center"><?php echo $recibo->recibo_placa ?></td>
+										<td class="text-center pr-3"><?php echo 'R$&nbsp;'
+												.$recibo->recibo_servico_valor_total ?></td>
 
                                         <td class="text-center">
-                                            <a title="Editar recibo" href="<?php echo base_url('os/edit/'
-													.$os->ordem_servico_id) ?>" data-toggle="tooltip " data-placement="top">
+                                            <a title="Editar recibo" href="<?php echo base_url('recibos/edit/'
+													.$recibo->recibo_servico_id) ?>" data-toggle="tooltip "
+											   data-placement="top">
                                             <i class=" fa fa-check"></i></a>
                                             <a title="Excluir recibo"href="javascript(void)" data-toggle="modal"
-                                                data-target="#os-<?php echo $os->ordem_servico_id; ?>"><i class="fa
+                                                data-target="#recibo-<?php echo $recibo->recibo_servico_id; ?>"><i
+													class="fa
                                                 fa-close" style="color:red"></i></a>
-											<a title="Imprimir recibo" target="_blank" href="<?php echo base_url('os/imprimirA4/'
-													.$os->ordem_servico_id) ?>" data-toggle="tooltip "
+											<a title="Imprimir recibo" target="_blank" href="<?php echo base_url('recibos/imprimirA4/'
+													.$recibo->recibo_servico_id) ?>" data-toggle="tooltip "
 											   data-placement="top">
 												<i class=" fa fa-print"></i></a>
                     
@@ -146,13 +120,14 @@
                                     </tr>
                                     
                                         <!-- Confirma exclusão Modal-->
-                                            <div class="modal fade" id="os-<?php echo $os->ordem_servico_id; ?>"
+                                            <div class="modal fade" id="recibo-<?php echo $recibo->recibo_servico_id;
+                                            ?>"
 												 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Tem certeza que
-														deseja excluir? A exclusão causará divergência no relatório
+														deseja excluir?
 														.</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
@@ -162,7 +137,8 @@
 															em <strong>"Confirmar" !</strong> </h6></div>
                                                     <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                                    <a class="btn btn-danger" href="<?php echo base_url('os/del/'.$os->ordem_servico_id); ?>">Confirmar</a>
+                                                    <a class="btn btn-danger" href="<?php echo base_url('recibos/del/'
+														.$recibo->recibo_servico_id); ?>">Confirmar</a>
                                                     </div>
                                                 </div>
                                                 </div>

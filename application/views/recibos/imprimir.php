@@ -52,7 +52,7 @@
 
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="<?php echo base_url('os'); ?>">Ordens</a></li>
+						<li class="breadcrumb-item"><a href="<?php echo base_url('recibos'); ?>">Recibos</a></li>
 						<li class="breadcrumb-item active" aria-current="page"><?php echo $titulo; ?></li>
 					</ol>
 				</nav>
@@ -62,28 +62,30 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-4">
-								<a target="_blank" href="<?php echo base_url('os/imprimirA4/'.$ordem_servico->ordem_servico_id); ?>" class="btn btn-dark btn-icon-split btn-lg">
+								<a target="_blank" href="<?php echo base_url('recibos/imprimirA4/'
+									.$recibo_servico->recibo_servico_id); ?>" class="btn btn-dark btn-icon-split
+									btn-lg">
                          <span class="icon text-white-50">
                             <i class="fa fa-print"></i>
                          </span>
-									<span class="text">&nbsp;Imprimir Ordem de Serviço</span>
+									<span class="text">&nbsp;Imprimir Recibo</span>
 								</a>
 							</div>
 							<div class="col-md-4">
-								<a href="<?php echo base_url('os/add'); ?>" class="btn btn-success btn-icon-split
+								<a href="<?php echo base_url('recibos/add'); ?>" class="btn btn-success btn-icon-split
 								btn-lg">
                          <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                          </span>
-									<span class="text">&nbsp;Emitir Ordem de Serviço</span>
+									<span class="text">&nbsp;Emitir Recibo</span>
 								</a>
 							</div>
 							<div class="col-md-4">
-								<a href="<?php echo base_url('os'); ?>" class="btn btn-info btn-icon-split btn-lg">
+								<a href="<?php echo base_url('recibos'); ?>" class="btn btn-info btn-icon-split btn-lg">
                          <span class="icon text-white-50">
                             <i class="fa fa-list-ol"></i>
                          </span>
-									<span class="text">&nbsp;Listar Ordens de Serviços</span>
+									<span class="text">&nbsp;Listar Recibo</span>
 								</a>
 							</div>
 						</div>

@@ -77,3 +77,30 @@ function calculaTrocoOs() {
 	$("#valorPago").focus();
 
 }
+
+function calculaTrocoRecibo() {
+
+	var valorCompra = parseFloat($("#recibo_servico_valor_total").val());
+	var valorPago = parseFloat($("#recibo_servico_total_pago").val());
+	var valorTroco = 0;
+
+	if (valorPago == valorCompra) {
+		valorTroco = 0;
+		$("#recibo_servico_troco").val(valorTroco);
+		alert("Não gerou troco");
+
+	} else if (valorPago > valorCompra) {
+
+		valorTroco = valorPago - valorCompra;
+		$("#recibo_servico_troco").val(valorTroco.toFixed(2));
+
+
+	} else {
+		alert("Não gerou troco (Valor pago menor que valor da compra)");
+	}
+
+	//$("#valorCompra").val("");
+	$("#valorPago").val("");
+	$("#valorPago").focus();
+
+}

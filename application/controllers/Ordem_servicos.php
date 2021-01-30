@@ -21,7 +21,7 @@ class Ordem_servicos extends CI_Controller
 	{
 		$data =
 			[
-				'titulo' => 'Recibos Emitidos',
+				'titulo' => 'Emitir Ordens de Serviço',
 
 				'styles' => [
 					//Bootstrap
@@ -32,6 +32,8 @@ class Ordem_servicos extends CI_Controller
 					'vendors/nprogress/nprogress.css',
 					// iCheck
 					'vendors/iCheck/skins/flat/green.css',
+					//jQuery custom content scroller
+					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 					//Cuaton theme style
 					'build/css/custom.min.css',
 					//Cuaton theme style fonts, breadcrumb
@@ -85,7 +87,7 @@ class Ordem_servicos extends CI_Controller
 
 			$this->form_validation->set_rules('ordem_servico_veiculo_id','placa','trim|required');
 
-			$this->form_validation->set_rules('ordem_servico_forma_pagamento_id','','required');
+			$this->form_validation->set_rules('ordem_servico_status','','required');
 
 			if($this->form_validation->run()){
 
@@ -101,9 +103,8 @@ class Ordem_servicos extends CI_Controller
 					'ordem_servico_veiculo_id',
 					'ordem_servico_valor_desconto',
 					'ordem_servico_valor_total',
+					'ordem_servico_status',
 					'ordem_servico_obs',
-					'ordem_servico_total_pago',
-					'ordem_servico_troco'
 				], $this->input->post()
 				);
 
@@ -144,8 +145,6 @@ class Ordem_servicos extends CI_Controller
 						'ordem_ts_valor_unitario' => $servico_preco[$i],
 						'ordem_ts_valor_desconto' => $servico_desconto[$i],
 						'ordem_ts_valor_total' => $servico_item_total[$i],
-						'ordem_ts_total_pago' => $this->input->post('ordem_servico_total_pago'),
-						'ordem_ts_valor_troco' => $this->input->post('ordem_servico_troco'),
 					];
 
 					$data = html_escape($data);
@@ -158,13 +157,13 @@ class Ordem_servicos extends CI_Controller
 				}
 
 				//redirect('os');
-				redirect('os/imprimir/'. $ordem_servico_id);
+				redirect('os/imprimir/'. $id_ordem_servico);
 
 			}else{
 
 
 				$data = [
-					'titulo' => 'Emitir Recibo',
+					'titulo' => 'Emitir Ordem de Serviço',
 					'styles' => [
 						//select2
 						'vendors/select2/select2.min.css',
@@ -179,6 +178,8 @@ class Ordem_servicos extends CI_Controller
 						'vendors/nprogress/nprogress.css',
 						// iCheck
 						'vendors/iCheck/skins/flat/green.css',
+						//jQuery custom content scroller
+						'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 						//Cuaton theme style
 						'build/css/custom.min.css',
 						//Cuaton theme style fonts, breadcrumb
@@ -247,7 +248,9 @@ class Ordem_servicos extends CI_Controller
 
 			$this->form_validation->set_rules('ordem_servico_veiculo_id','placa','trim|required');
 
-			$this->form_validation->set_rules('ordem_servico_forma_pagamento_id','','required');
+			$this->form_validation->set_rules('ordem_servico_forma_pagamento_id','forma pgto','trim');
+
+			$this->form_validation->set_rules('ordem_servico_status','','required');
 
 			if($this->form_validation->run()){
 
@@ -263,9 +266,8 @@ class Ordem_servicos extends CI_Controller
 					'ordem_servico_veiculo_id',
 					'ordem_servico_valor_desconto',
 					'ordem_servico_valor_total',
+					'ordem_servico_status',
 					'ordem_servico_obs',
-					'ordem_servico_total_pago',
-					'ordem_servico_troco'
 				], $this->input->post()
 				);
 
@@ -301,8 +303,7 @@ class Ordem_servicos extends CI_Controller
 						'ordem_ts_valor_unitario' => $servico_preco[$i],
 						'ordem_ts_valor_desconto' => $servico_desconto[$i],
 						'ordem_ts_valor_total' => $servico_item_total[$i],
-						'ordem_ts_total_pago' => $this->input->post('ordem_servico_total_pago'),
-						'ordem_ts_valor_troco' => $this->input->post('ordem_servico_troco'),
+
 					];
 
 					$data = html_escape($data);
@@ -311,14 +312,14 @@ class Ordem_servicos extends CI_Controller
 
 				}
 
-				//redirect('os');
-				redirect('os/imprimir/'. $ordem_servico_id);
+				redirect('os');
+				//redirect('os/imprimir/'. $ordem_servico_id);
 
 			}else{
 
 
 				$data = [
-					'titulo' => 'Editar Recbibo',
+					'titulo' => 'Editar Ordem de Serviço',
 					'styles' => [
 						//select2
 						'vendors/select2/select2.min.css',
@@ -333,6 +334,8 @@ class Ordem_servicos extends CI_Controller
 						'vendors/nprogress/nprogress.css',
 						// iCheck
 						'vendors/iCheck/skins/flat/green.css',
+						//jQuery custom content scroller
+						'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 						//Cuaton theme style
 						'build/css/custom.min.css',
 						//Cuaton theme style fonts, breadcrumb
@@ -400,6 +403,12 @@ class Ordem_servicos extends CI_Controller
 		if(!$ordem_servico_id || !$this->core_model->get_by_id('ordens_servicos', ['ordem_servico_id' => $ordem_servico_id])){
 			$this->session->set_flashdata('error', 'Recibo não localizado !!!');
 			redirect('os');
+		}
+
+		if($this->core_model->get_by_id('ordens_servicos', ['ordem_servico_id' => $ordem_servico_id, 'ordem_servico_status !=' => "CONCLUIDO", 'ordem_servico_status !=' => "CANCELADO"])){
+			$this->session->set_flashdata('info', 'Solicitação não atendida, essa ordem de serviço está em aberto !!!');
+			redirect('os');
+
 		}
 
 		$this->core_model->delete('ordens_servicos', ['ordem_servico_id' => $ordem_servico_id]);

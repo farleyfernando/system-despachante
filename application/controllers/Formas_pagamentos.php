@@ -30,6 +30,8 @@ class Formas_pagamentos extends CI_Controller
 					'vendors/nprogress/nprogress.css',
 					// iCheck
 					'vendors/iCheck/skins/flat/green.css',
+					//jQuery custom content scroller
+					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 					//Cuaton theme style
 					'build/css/custom.min.css',
 					//Cuaton theme style fonts, breadcrumb
@@ -117,6 +119,8 @@ class Formas_pagamentos extends CI_Controller
 							'vendors/nprogress/nprogress.css',
 							// iCheck
 							'vendors/iCheck/skins/flat/green.css',
+							//jQuery custom content scroller
+							'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 							//Cuaton theme style
 							'build/css/custom.min.css',
 							//Cuaton theme style fonts, breadcrumb
@@ -220,6 +224,8 @@ class Formas_pagamentos extends CI_Controller
 							'vendors/nprogress/nprogress.css',
 							// iCheck
 							'vendors/iCheck/skins/flat/green.css',
+							//jQuery custom content scroller
+							'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 							//Cuaton theme style
 							'build/css/custom.min.css',
 							//Cuaton theme style fonts, breadcrumb

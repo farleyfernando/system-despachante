@@ -30,6 +30,8 @@ class Servicos extends CI_Controller
 					'vendors/nprogress/nprogress.css',
 					// iCheck
 					'vendors/iCheck/skins/flat/green.css',
+					//jQuery custom content scroller
+					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 					//Cuaton theme style
 					'build/css/custom.min.css',
 					//Cuaton theme style fonts, breadcrumb
@@ -98,6 +100,8 @@ class Servicos extends CI_Controller
 			$data['servico_nome'] = strtoupper($this->input->post('servico_nome'));
 			$data['servico_descricao'] = strtoupper($this->input->post('servico_descricao'));
 
+			$data['servico_preco'] = str_replace(',', '.', trim($this->input->post('servico_preco')));
+
 			$data = html_escape($data);
 
 			$this->core_model->insert('servicos', $data);
@@ -116,6 +120,8 @@ class Servicos extends CI_Controller
 					'vendors/nprogress/nprogress.css',
 					// iCheck
 					'vendors/iCheck/skins/flat/green.css',
+					//jQuery custom content scroller
+					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 					//Cuaton theme style
 					'build/css/custom.min.css',
 					// stilo
@@ -184,6 +190,8 @@ class Servicos extends CI_Controller
 				], $this->input->post()
 			);
 
+			$data['servico_preco'] = str_replace(',', '.', trim($this->input->post('servico_preco')));
+
 			$data = html_escape($data);
 
 			$this->core_model->update('servicos', $data, ['servico_id' => $servico_id]);
@@ -202,6 +210,8 @@ class Servicos extends CI_Controller
 					'vendors/nprogress/nprogress.css',
 					// iCheck
 					'vendors/iCheck/skins/flat/green.css',
+					//jQuery custom content scroller
+					'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 					//Cuaton theme style
 					'build/css/custom.min.css',
 					// stilo

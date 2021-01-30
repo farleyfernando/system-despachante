@@ -16,6 +16,11 @@ class Users extends CI_Controller{
 
     public function index()
     {
+		if(!$this->ion_auth->is_admin()){
+
+			$this->session->set_flashdata('error', 'ACESSO NEGADO !!!');
+			redirect('/');
+		}
         $data = [
             'titulo' => 'Usuários Cadstrados',
 
@@ -28,6 +33,8 @@ class Users extends CI_Controller{
                         'vendors/nprogress/nprogress.css',
                         // iCheck
                         'vendors/iCheck/skins/flat/green.css',
+						//jQuery custom content scroller
+						'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
                         //Cuaton theme style
                         'build/css/custom.min.css',
 						//Cuaton theme style fonts, breadcrumb
@@ -149,6 +156,8 @@ class Users extends CI_Controller{
                             'vendors/nprogress/nprogress.css',
                             // iCheck
                             'vendors/iCheck/skins/flat/green.css',
+							//jQuery custom content scroller
+							'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
                             //Cuaton theme style
                             'build/css/custom.min.css',
 							//Cuaton theme style fonts, breadcrumb
@@ -190,7 +199,7 @@ class Users extends CI_Controller{
 
             if (($this->session->userdata('user_id') != $usuario_id)) {
                 $this->session->set_flashdata('error', 'ACESSO NEGADO !!!');
-                redirect('users');
+                redirect('home');
             }
         }
         
@@ -238,9 +247,9 @@ class Users extends CI_Controller{
                 //print_r($data);
                 //exit;
                 
-                //if (!$this->ion_auth->is_admin()) {
-                //    unset($data['active']);
-              //  }           
+                if (!$this->ion_auth->is_admin()) {
+                    unset($data['active']);
+              	}
 
                 // verificação contra tentativa de introdução de codigos maliciosos no formulário limpando os formulários
                 $data = $this->security->xss_clean($data);
@@ -251,8 +260,6 @@ class Users extends CI_Controller{
                 if (!$password) {
                     unset($data['password']);
                 }
-
-                
 
                    //echo '<pre>';
                    //print_r($data);
@@ -288,7 +295,7 @@ class Users extends CI_Controller{
                 if($this->ion_auth->is_admin()){
                     redirect('users');                 
                 }else{
-                    redirect('users');
+                    redirect('home');
                 }
                 
             } else {
@@ -302,6 +309,8 @@ class Users extends CI_Controller{
                                     'vendors/nprogress/nprogress.css',
                                     // iCheck
                                     'vendors/iCheck/skins/flat/green.css',
+									//jQuery custom content scroller
+									'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
                                     //Cuaton theme style
                                     'build/css/custom.min.css',
 									//Cuaton theme style fonts, breadcrumb

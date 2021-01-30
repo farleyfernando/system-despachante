@@ -23,7 +23,7 @@ class Relatorios extends CI_Controller
 	public function receitas()
 	{
 		$data = [
-			'titulo' => 'Relatórios de Receitas',
+			'titulo' => 'Relatório de Ordens de Serviços',
 
 			'styles' => [
 				//Bootstrap
@@ -34,6 +34,8 @@ class Relatorios extends CI_Controller
 				'vendors/nprogress/nprogress.css',
 				// iCheck
 				'vendors/iCheck/skins/flat/green.css',
+				//jQuery custom content scroller
+		        'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 				//Cuaton theme style
 				'build/css/custom.min.css',
 				//Cuaton theme style fonts, breadcrumb
@@ -78,7 +80,7 @@ class Relatorios extends CI_Controller
 
 				$html .= '<head>';
 
-				$html .= '<title>'.$empresa->empresa_nome_fantasia.' | Relatório de Receitas</title>';
+				$html .= '<title>'.$empresa->empresa_nome_fantasia.' | Relatório de Ordens de Serviços</title>';
 
 				$html .= '<style>';
 				$html .= 'table';
@@ -141,10 +143,11 @@ class Relatorios extends CI_Controller
 				$html .= '<hr>';
 
 				if ($data_inicial && $data_final) {
-					$html .= '<p>Relatório de receitas realizadas no período de &nbsp;'.formata_data_banco_sem_hora
+					$html .= '<p>Relatório de ordens de serviços realizadas no período de &nbsp;'
+						.formata_data_banco_sem_hora
 						($data_inicial).' - '.formata_data_banco_sem_hora($data_final).'</p>';
 				} else {
-					$html .= '<p>Relatório de receitas à partir de '.formata_data_banco_sem_hora($data_inicial).'</p>';
+					$html .= '<p>Relatório de Ordens de Serviços de '.formata_data_banco_sem_hora($data_inicial).'</p>';
 				}
 
 				$html .= '<hr>';
@@ -240,6 +243,8 @@ class Relatorios extends CI_Controller
 				'vendors/nprogress/nprogress.css',
 				// iCheck
 				'vendors/iCheck/skins/flat/green.css',
+				//jQuery custom content scroller
+				'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 				//Cuaton theme style
 				'build/css/custom.min.css',
 				//Cuaton theme style fonts, breadcrumb
@@ -721,6 +726,8 @@ class Relatorios extends CI_Controller
 				'vendors/nprogress/nprogress.css',
 				// iCheck
 				'vendors/iCheck/skins/flat/green.css',
+				//jQuery custom content scroller
+				'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
 				//Cuaton theme style
 				'build/css/custom.min.css',
 				//Cuaton theme style fonts, breadcrumb

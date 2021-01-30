@@ -1,7 +1,7 @@
 <div class="clearfix"></div>
 
 			<!--trazer usuário atual edição de perfil e colocar username-->
-			<?php $user = $this->ion_auth->user()->row(); ?>
+
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
@@ -10,7 +10,10 @@
               </div>
               <div class="profile_info">
                 <span>Bem-vindo,</span>
-                <h2>FFSoft</h2>
+				  <?php $user = $this->ion_auth->user()->row(); ?>
+                <h2><?php echo ($user) ? $user->first_name : 'SysDES';
+					?></h2>
+
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -26,7 +29,8 @@
 
                   <li><a><i class="fa fa-desktop"></i> Serviços <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url('os')?>">Recibos</a></li>
+                      <li><a href="<?php echo base_url('os')?>">Ordens Serviços</a></li>
+                      <li><a href="<?php echo base_url('recibos')?>">Recibos</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-plus-square"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
@@ -47,35 +51,35 @@
 					  <li><a href="<?php echo base_url('especies')?>"">Espécies</a></li>
                     </ul>
                   </li>
-					<li><a><i class="fa fa-dollar"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
-							<li><a href="<?php echo base_url('pagar')?>">Contas à Pagar</a></li>
-							<li><a href="<?php echo base_url('receber')?>">Contas à Receber</a></li>
 
+					<?php if($this->ion_auth->is_admin()) : ;?>
+							<li><a><i class="fa fa-dollar"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+								<ul class="nav child_menu">
+									<li><a href="<?php echo base_url('pagar')?>">Contas à Pagar</a></li>
+									<li><a href="<?php echo base_url('receber')?>">Contas à Receber</a></li>
+								</ul>
+							</li>
+							<li><a><i class="fa fa-line-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+								<ul class="nav child_menu">
+									<li><a href="<?php echo base_url('relatorios/pagar')?>">Contas à Pagar</a></li>
+									<li><a href="<?php echo base_url('relatorios/receber')?>">Contas à Receber</a></li>
+									<li><a href="<?php echo base_url('relatorios/receitas')?>">Serviços</a></li>
+								</ul>
+							</li>
 						</ul>
-					</li>
-					<li><a><i class="fa fa-line-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
-							<li><a href="<?php echo base_url('relatorios/pagar')?>">Contas à Pagar</a></li>
-							<li><a href="<?php echo base_url('relatorios/receber')?>">Contas à Receber</a></li>
-							<li><a href="<?php echo base_url('relatorios/receitas')?>">Receitas</a></li>
+					  </div>
+					  <!-- MODULO CONFIG -->
+					  <div class="menu_section">
+						<h3>CONFIGURAÇÕES</h3>
+						<ul class="nav side-menu">
+						  <li><a><i class="fa fa-globe"></i> Sistema <span class="fa fa-chevron-down"></span></a>
+							<ul class="nav child_menu">
+							  <li><a href="<?php echo base_url('users') ?>">Usuários</a></li>
+							  <li><a href="<?php echo base_url('empresa') ?>">Empresa</a></li>
+							</ul>
+						  </li>
+					<?php endif;?>
 
-						</ul>
-					</li>
-				</ul>
-              </div>
-              <!-- MODULO CONFIG -->
-              <div class="menu_section">
-                <h3>CONFIGURAÇÕES</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-globe"></i> Sistema <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url('users') ?>">Usuários</a></li>
-                      <li><a href="<?php echo base_url('empresa') ?>">Empresa</a></li>
-
-
-                    </ul>
-                  </li>
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="page_403.html">Calendário</a></li>
@@ -118,7 +122,9 @@
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
 
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="<?php echo base_url('public/images/img.jpg')?>" alt="">FFSoft
+                      <img src="<?php echo base_url('public/images/img.jpg')?>" alt=""><?php echo ($user) ?
+								$user->first_name : 'SysDES';
+						?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
 
