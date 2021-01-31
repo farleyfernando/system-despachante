@@ -56,10 +56,52 @@ class Home extends CI_Controller {
 			//home card vendas
 			'soma_ordem_servicos' => $this->home_model->get_sum_ordem_servicos(),
 			'veiculos_dut' => $this->home_model->get_veiculos_dut_vencendo(),
+			'veiculos_dut_vencido' => $this->home_model->get_veiculos_dut_vencido(),
 			'total_pagar' => $this->home_model->get_sum_pagar(),
 			'total_receber' => $this->home_model->get_sum_receber(),
 			'servicos_mais_vendidos' => $this->home_model->get_servicos_mais_vendidos(),
 		];
+
+		//Notificações
+		$contador_notificacoes = 0;
+
+		if ($this->home_model->get_contas_receber_vencidas()) {
+			$data['contas_receber_vencidas'] = true;
+			++$contador_notificacoes;
+		} else {
+			$data['contas_receber_vencidas'] = false;
+		}
+
+		if ($this->home_model->get_contas_pagar_vencidas()) {
+			$data['contas_pagar_vencidas'] = true;
+			++$contador_notificacoes;
+		} else {
+			$data['contas_pagar_vencidas'] = false;
+		}
+
+		if ($this->home_model->get_contas_pagar_vencem_hoje()) {
+			$data['contas_pagar_vencem_hoje'] = true;
+			++$contador_notificacoes;
+		} else {
+			$data['contas_pagar_vencem_hoje'] = false;
+		}
+
+		if ($this->home_model->get_contas_receber_vencem_hoje()) {
+			$data['contas_receber_vencem_hoje'] = true;
+			++$contador_notificacoes;
+		} else {
+			$data['contas_receber_vencem_hoje'] = false;
+		}
+
+		if ($this->home_model->get_usuarios_desativados()) {
+			$data['usuarios_desativados'] = true;
+			++$contador_notificacoes;
+		} else {
+			$data['usuarios_desativados'] = false;
+		}
+
+		$data['contador_notificacoes'] = $contador_notificacoes;
+
 
 		//echo '<pre>';
 		//print_r($data['veiculos_dut']);

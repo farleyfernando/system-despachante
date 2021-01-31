@@ -67,7 +67,7 @@ class Home_model extends CI_Model
         $this->db->select([
             'contas_pagar.*',            
             'fornecedor_id',
-            'fornecedor_nome_fantasia as fornecedor',
+            'fornecedor_sobrenome as fornecedor',
         ]);
         $this->db->where('conta_pagar_status', 0);
         $this->db->where('conta_pagar_data_venc =', date('Y-m-d'));
@@ -86,11 +86,26 @@ class Home_model extends CI_Model
 
 
         ]);
-        $this->db->where('veiculo_venc_dut =', date('Y-m-d'));
+        $this->db->where('veiculo_venc_dut <=', date('Y-m-d'));
         $this->db->join('clientes', 'cliente_id = veiculo_prop_id', 'LEFT');
         return $this->db->get('veiculos')->result();
 
     }
+
+	public function get_veiculos_dut_vencido(){
+
+		$this->db->select([
+			'veiculos.*',
+			'cliente_id',
+			'CONCAT(clientes.cliente_nome, " ", cliente_sobrenome) as veiculo_cliente',
+
+
+		]);
+		$this->db->where('veiculo_venc_dut <', date('Y-m-d'));
+		$this->db->join('clientes', 'cliente_id = veiculo_prop_id', 'LEFT');
+		return $this->db->get('veiculos')->result();
+
+	}
 
     public function get_contas_receber_vencem_hoje(){
 
@@ -101,7 +116,7 @@ class Home_model extends CI_Model
         ]);
 
         $this->db->where('conta_receber_status', 0);
-        $this->db->where('conta_receber_data_vencto =', date('Y-m-d'));
+        $this->db->where('conta_receber_data_venc =', date('Y-m-d'));
 
         $this->db->join('clientes', 'cliente_id = conta_receber_cliente_id', 'LEFT');
         return $this->db->get('contas_receber')->row();
@@ -139,7 +154,7 @@ class Home_model extends CI_Model
 
     public function get_contas_receber_vencidas(){
 
-        $this->db->where('conta_receber_data_vencto <', date('Y-m-d'));
+        $this->db->where('conta_receber_data_venc <', date('Y-m-d'));
         $this->db->where('conta_receber_status', 0);
 
         return $this->db->get('contas_receber')->row();

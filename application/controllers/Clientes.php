@@ -2,6 +2,7 @@
 
 defined('BASEPATH') or exit('Caminho inválido');
 
+
 class Clientes extends CI_Controller
 {
 	public function __construct()
@@ -12,6 +13,7 @@ class Clientes extends CI_Controller
 			$this->session->set_flashdata('info', 'Sessão encerrada, favor efetuar o login novamente !!!');
 			redirect('login');
 		}
+		$this->load->model('files_model');
 	}
 
 	public function index()
@@ -66,6 +68,7 @@ class Clientes extends CI_Controller
 
 
 				'clientes' => $this->core_model->get_all('clientes'),
+				'files' => $this->files_model->get_all(''),
 
             ];
             
@@ -229,7 +232,7 @@ class Clientes extends CI_Controller
 				$this->load->view('layout/footer');
 			}
 		}
-    
+
     public function edit($cliente_id = null)
     {
         if(!$cliente_id || !$this->core_model->get_by_id('clientes', ['cliente_id' => $cliente_id])){
@@ -386,7 +389,7 @@ class Clientes extends CI_Controller
 			redirect('clientes');
 		}
 
-		/*
+
 		if($this->db->table_exists('contas_receber')){
 
 			if($this->core_model->get_by_id('contas_receber', ['conta_receber_cliente_id' => $cliente_id, 'conta_receber_status' => 0])){
@@ -403,7 +406,7 @@ class Clientes extends CI_Controller
 				redirect('clientes');
 			}
 		}
-		*/
+
 	}
 
 	public function valida_cnpj($cnpj) {

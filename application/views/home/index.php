@@ -79,13 +79,6 @@
 						  <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 125px;"></canvas>
 					  </span>
 					</div>
-					<div class="col-md-3 col-sm-3  tile">
-						<span>Total Sessions</span>
-						<h2>231,809</h2>
-						<span class="sparkline_one" style="height: 160px;">
-                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                  </span>
-					</div>
 				</div>
 			</div>
 			<br/>
@@ -95,7 +88,7 @@
 					<!-- Illustrations -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">VEICULOS COM DUT VENCENDO HOJE</h6>
+							<h6 class="m-0 font-weight-bold text-primary">VEICULOS COM VENCIMENTO DE DUT</h6>
 						</div>
 						<div class="card-body">
 							<div class="text-center">
@@ -122,13 +115,22 @@
 											<td class="text-gray-900" style="font-size:14px;"><?php echo
 												$veiculo->veiculo_placa ?></td>
 											<td class="text-center" style="font-size:14px;">
-												<?php echo'<span class="badge badge-warning" 
-												style="font-size:13px;">' . formata_data_banco_sem_hora
-													($veiculo->veiculo_venc_dut) . ' - Vence Hoje</span>'
-											?></td>
+												<?php
+													if($veiculo->veiculo_venc_dut == date('Y-m-d')){
+
+														echo '<span class="badge badge-warning" style="font-size:13px;">'.
+																formata_data_banco_sem_hora
+																($veiculo->veiculo_venc_dut).' - Vence Hoje</span>';
+													}else{
+														echo '<span class="badge badge-danger" style="font-size:13px;">'.
+																formata_data_banco_sem_hora
+																($veiculo->veiculo_venc_dut).' - Vencido</span>';
+													}
+												?>
+											</td>
+
 											<td class="text-center"><?php echo '<span class="badge badge-primary" style="font-size:13px;">' . $veiculo->veiculo_cliente . '</span>' ?></td>
 										</tr>
-
 
 									<?php endforeach; ?>
 

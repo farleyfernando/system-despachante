@@ -82,8 +82,9 @@
 
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="page_403.html">Calendário</a></li>
-                      
+                      <li><a href="arquivos">Central Arquivos</a></li>
+					  <li><a href="page_403.html">Calendário</a></li>
+
                     </ul>
                   </li>
                 </ul>
@@ -132,47 +133,76 @@
                       <a class="dropdown-item"  href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
-  
+
+		<?php if(isset($contador_notificacoes) and $contador_notificacoes > 0): ?>
+
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-envelope-o"></i>
-                      <span class="badge bg-green">6</span>
+                      <i class="fa fa-bell-o"></i>
+                      <span class="badge bg-green"><?php echo $contador_notificacoes; ?></span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+
+				<!-- Dropdown - Alerts contas a receber vencidas-->
+				<?php if ($contas_receber_vencidas) : ?>
                       <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="<?php echo base_url('public/images/img.jpg')?>" alt="Profile Image" /></span>
+                        <a class="dropdown-item" href="<?php echo base_url('receber'); ?>">
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span class="time"><?php echo ucfirst( utf8_encode( strftime("%d de %B de %Y", strtotime("now") ) ) ); ?></span>
                           </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          <span class=""><br>
+                            <i class="fa fa-bell-o" aria-hidden="true"></i>&nbsp;&nbsp;Existem contas a receber vencidas!
                           </span>
                         </a>
                       </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="<?php echo base_url('public/images/img.jpg')?>" alt="Profile Image" /></span>
+				<?php endif; ?>
+
+						<!-- Dropdown - Alerts contas a pagar vencidas-->
+				<?php if ($contas_pagar_vencidas) : ?>
+							<li class="nav-item">
+								<a class="dropdown-item" href="<?php echo base_url('pagar'); ?>">
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span class="time"><?php echo ucfirst( utf8_encode( strftime("%d de %B de %Y", strtotime("now") ) ) ); ?></span>
                           </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+									<span class=""><br>
+                            <i class="fa fa-bell-o" aria-hidden="true"></i>&nbsp;&nbsp;Existem contas à pagar vencidas!
                           </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                          </a>
-                        </div>
-                      </li>
+								</a>
+							</li>
+				<?php endif; ?>
+
+						<!-- Dropdown - Alerts contas a receber vencem hoje-->
+				<?php if ($contas_receber_vencem_hoje) : ?>
+							<li class="nav-item">
+								<a class="dropdown-item" href="<?php echo base_url('receber'); ?>">
+                          <span>
+                            <span class="time"><?php echo ucfirst( utf8_encode( strftime("%d de %B de %Y", strtotime("now") ) ) ); ?></span>
+                          </span>
+							<span class=""><br>
+                            <i class="fa fa-bell-o" aria-hidden="true"></i>&nbsp;&nbsp;Existem contas à receber
+								vencendo hoje!
+                          </span>
+								</a>
+							</li>
+				<?php endif; ?>
+						<!-- Dropdown - Alerts contas a pagar vencem hoje-->
+				<?php if ($contas_pagar_vencem_hoje) : ?>
+							<li class="nav-item">
+								<a class="dropdown-item" href="<?php echo base_url('pagar'); ?>">
+                          <span>
+                            <span class="time"><?php echo ucfirst( utf8_encode( strftime("%d de %B de %Y", strtotime("now") ) ) ); ?></span>
+                          </span>
+									<span class=""><br>
+                            <i class="fa fa-bell-o" aria-hidden="true"></i>&nbsp;&nbsp;Existem contas à pagar
+										vencendo hoje!
+                          </span>
+								</a>
+							</li>
+				<?php endif; ?>
                     </ul>
                   </li>
+
+		<?php endif; ?>
                 </ul>
               </nav>
             </div>
