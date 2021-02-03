@@ -10,6 +10,19 @@
 			<!--                    MENSAGENS AO USUARIO                        -->
 			<!-- ============================================================== -->
 
+			<?php if($message = $this->session->flashdata('login')) : ?>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong><i class="fa fa-smile-o"></i>&nbsp;&nbsp;<?php echo $message
+								?></strong>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			<?php endif ?>
 			<?php if($message = $this->session->flashdata('sucesso')) : ?>
 				<div class="row">
 					<div class="col-md-12">
@@ -53,20 +66,16 @@
 				<div class=" top_tiles" style="margin: 10px 0;">
 					<div class="col-md-3 col-sm-3  tile">
 						<span>Total de Serviços</span>
-						<h2 class="text-info"><?php echo 'R$&nbsp;'.number_format
-								($soma_ordem_servicos->ordem_servico_valor_total == null ? '0,00' :
-									$soma_ordem_servicos->ordem_servico_valor_total,
-									2, ",", ".")	; ?></h2>
+						<h2 class="text-info"><?php echo 'R$&nbsp;'.($soma_ordem_servicos->ordem_servico_valor_total
+									== null ? '0,00' : $soma_ordem_servicos->ordem_servico_valor_total); ?></h2>
 						<span class="sparkline_one" style="height: 160px;">
 						  <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
 					  </span>
 					</div>
 					<div class="col-md-3 col-sm-3  tile">
 						<span>Contas à Pagar</span>
-						<h2 class="text-danger"><?php echo 'R$&nbsp;'.number_format
-								($total_pagar->conta_pagar_valor == null ? '0,00' :
-									$total_pagar->conta_pagar_valor,
-									2, ",", ".")	; ?></h2>
+						<h2 class="text-danger"><?php echo 'R$&nbsp;'.($total_pagar->conta_pagar_valor == null ? '0,00' :
+									$total_pagar->conta_pagar_valor); ?></h2>
 						<span class="sparkline_one" style="height: 160px;">
 						  <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
 					  </span>

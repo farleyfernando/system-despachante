@@ -41,6 +41,10 @@ class Login extends CI_Controller{
         $remember = FALSE;
 
         if($this->ion_auth->login($identify, $password, $remember)){
+			$user = $this->ion_auth->user()->row();
+
+			$this->session->set_flashdata('login', 'BEM-VINDO - '. $user->first_name.' '. $user->last_name);
+
             redirect('home');
         }else{
 

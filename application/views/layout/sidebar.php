@@ -6,7 +6,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?php echo base_url('public/images/img.jpg')?>" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url('public/images/user.png')?>" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bem-vindo,</span>
@@ -83,7 +83,7 @@
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="arquivos">Central Arquivos</a></li>
-					  <li><a href="page_403.html">Calendário</a></li>
+					  <li><a href="calendario">Calendário</a></li>
 
                     </ul>
                   </li>
@@ -96,7 +96,7 @@
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-cog" aria-hidden="false"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="FullScreen">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
@@ -104,7 +104,8 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-placement="top" href="#" data-toggle="modal" data-target="#logoutModal"
+				 title="Logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -123,7 +124,7 @@
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
 
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="<?php echo base_url('public/images/img.jpg')?>" alt=""><?php echo ($user) ?
+                      <img src="<?php echo base_url('public/images/user.png')?>" alt=""><?php echo ($user) ?
 								$user->first_name : 'SysDES';
 						?>
                     </a>

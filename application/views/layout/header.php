@@ -9,21 +9,24 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('public/images/ffsofticone.png')?>">
 
-    <?php echo (isset($titulo) ? '<title> System - Despachante | '. $titulo.'</title>' : '<System></title>') ?>
+    <?php echo (isset($titulo) ? '<title> SysDES - Sistema de Gestão de Despachantes | '. $titulo.'</title>' :
+			'<System></title>') ?>
 
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <!-- Inclusão de styles vindo de controllers usuarios-->
-    <?php if(isset($styles)): ?>
 
-    <?php foreach($styles as $style): ?>
+	  <!-- Inclusão de styles vindo de controllers usuarios-->
+	  <?php if(isset($styles)): ?>
 
-        <link href="<?php echo base_url('public/'.$style); ?>" rel="stylesheet">
+		  <?php foreach($styles as $style): ?>
 
-    <?php endforeach; ?>
+			  <link href="<?php echo base_url('public/'.$style); ?>" rel="stylesheet">
 
-    <?php endif; ?>
+		  <?php endforeach; ?>
 
-	  <script src="<?php echo base_url('public/src/js/cep.js')?> "></script>
+	  <?php endif; ?>
+
+	<script src="<?php echo base_url('public/src/js/cep.js')?> "></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,5 +43,6 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo base_url('home')?> " class="site_title"><i class="fa fa-paw"></i> <span>FFSoft - System</span></a>
+              <a href="<?php echo base_url('home')?> " class="site_title"><i class="fa fa-cab"></i>
+				  <span>SysDES - Gestão</span></a>
             </div>

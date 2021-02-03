@@ -91,7 +91,7 @@
 								<div class="col-md-2">
 									<label class="pl-2">Tipo</label>
 									<select class="form-control" name="veiculo_tipo_id">
-										<option></option>
+										<option value="0">SELECIONE</option>
 										<?php foreach ($tipos as $tipo): ?>
 											<option value="<?php echo $tipo->tipo_id ?>" <?php echo
 											($tipo->tipo_nome); ?> <?php echo
@@ -114,7 +114,7 @@
 								<div class="col-md-2">
 									<label class="pl-2">Espécie</label>
 									<select class="form-control" name="veiculo_especie_id">
-										<option></option>
+										<option value="0">SELECIONE</option>
 										<?php foreach ($especies as $especie): ?>
 											<option value="<?php echo $especie->especie_id ?>"> <?php echo
 											($especie->especie_nome); ?></option>
@@ -124,7 +124,7 @@
 								<div class="col-md-2">
 									<label class="pl-2">Cor</label>
 									<select class="form-control" name="veiculo_cor_id">
-										<option></option>
+										<option value="0">SELECIONE</option>
 										<?php foreach ($cores as $cor): ?>
 											<option value="<?php echo $cor->cor_id ?>" <?php echo
 											($cor->cor_nome); ?> <?php echo
@@ -141,7 +141,7 @@
 								<div class="col-md-2">
 									<label class="pl-2">Combustível</label>
 									<select class="form-control" name="veiculo_combustivel_id">
-										<option></option>
+										<option value="0">SELECIONE</option>
 										<?php foreach ($combustiveis as $combustivel): ?>
 											<option value="<?php echo $combustivel->combustivel_id ?>" <?php echo
 											($combustivel->combustivel_nome); ?> <?php echo
@@ -163,7 +163,7 @@
 								<div class="col-md-2">
 									<label class="pl-2">Categoria</label>
 									<select class="form-control" name="veiculo_categoria_id">
-										<option></option>
+										<option value="0">SELECIONE</option>
 										<?php foreach ($categorias as $categoria): ?>
 											<option value="<?php echo $categoria->categoria_id ?>" <?php echo
 											($categoria->categoria_nome); ?> <?php echo
@@ -263,7 +263,7 @@
 								<div class="col-md-8">
 									<label class="pl-2">Proprietário <span>*</span></label>
 									<select class="form-control" name="veiculo_prop_id">
-										<option></option>
+										<option value="0">SELECIONE</option>
 										<?php foreach ($clientes as $cliente): ?>
 											<option value="<?php echo $cliente->cliente_id ?>"
 													<?php echo ($cliente->cliente_ativo == 0 ? 'disabled' : '')?>>

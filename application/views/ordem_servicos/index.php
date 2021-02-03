@@ -70,7 +70,7 @@
                             <div class="clearfix"></div>
                             <div class="mt-3 mb-3" style="float: right;">
 						        <a title="Nova os Alt+O" accesskey="O" href="<?php echo base_url('os/add'); ?>"
-								   ><i class="fa fa-plus
+								   ><i class="fa fa-plus-square-o
 						        fa-3x"
 								   style="color:seagreen"></i></a>
 					        </div>

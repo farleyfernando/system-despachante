@@ -101,10 +101,13 @@
                 <div class="clearfix"></div>
                 <br />
 
-                <div class="mr-5" >
-                  <img src="<?php echo base_url('public/images/ffsoflogologin.png')?>" width=300 height=50>
-                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;©2021 Todos os direitos reservados - FFSoft </p>
+                <div class="mr-5">
+                  <img src="<?php echo base_url('public/images/sysdes.png')?>" width=400 height=50>
                 </div>
+				  <div class="ml-4 mt-3">
+					  <a href="https://farleyfernando.com.br" target="_blank">© <?php echo date('Y')?> - Todos os
+						  direitos reservados - FFSoft </a>
+				  </div>
               </div>
             </form>
           </section>

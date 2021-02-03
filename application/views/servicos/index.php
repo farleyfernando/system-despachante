@@ -68,9 +68,9 @@
                             </ol>
                             
                             <div class="clearfix"></div>
-                            <div class="mt-3 mb-3" style="float: right;">
+                            <div class="mt-3 mb-3 mr-3" style="float: right;">
 						        <a title="Novo serviço Alt+O" accesskey="O" href="<?php echo base_url('servicos/add');
-						        ?>"><i class="fa fa-user-plus fa-3x"
+						        ?>"><i class="fa fa-plus-square-o fa-3x"
 																					  style="color:seagreen"></i></a>
 					        </div>
                         </div>

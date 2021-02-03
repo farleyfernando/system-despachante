@@ -41,8 +41,8 @@
 								</td>
 							</tr> <?php } else { ?>
 							<tr>
-								<td style="width: 25%"><img src="<?php echo base_url(); ?>public/images/icontech.png"
-															style="max-height: 100px"></td>
+								<!--<td style="width: 25%"><img src="<?php echo base_url(); ?>public/images/icontech
+								.png" style="max-height: 100px"></td>-->
 								<td>
 									<span style="font-size: 20px; "> <?php echo $empresa->empresa_nome_fantasia;
 									?></span> </br>
@@ -112,18 +112,24 @@
 					<table class="table table-condensed">
 						<tbody>
 
-						<?php if ($ordem_servico->ordem_servico_data_emissao != null) { ?>
 
-							<?php if ($ordem_servico->ordem_servico_obs != null) { ?>
 								<tr>
 									<td colspan="5">
 										<b>OBSERVAÇÕES: </b>
 										<?php echo htmlspecialchars_decode($ordem_servico->ordem_servico_obs) ?>
 									</td>
 								</tr>
-							<?php } ?>
-						<?php } ?>
 
+
+						</tbody>
+					</table>
+
+					<table class="table table-condensed">
+						<tbody>
+								<tr>
+									<td>
+									</td>
+								</tr>
 						</tbody>
 					</table>
 

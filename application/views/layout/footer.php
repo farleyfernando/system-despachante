@@ -1,5 +1,5 @@
 <!-- footer content -->
-<footer>
+		<footer>
           <div class="text-center">
           © Todos os direitos reservados - <a target="_blank" href="https://farleyfernando.com.br">FFSoft</a>
           </div>

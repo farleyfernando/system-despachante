@@ -478,7 +478,7 @@ class Ordem_servicos extends CI_Controller
 			redirect('os');
 		}
 
-		$this->data['titulo'] = 'Impressão Recibo';
+		$this->data['titulo'] = 'Impressão de Ordem de Serviço';
 		$this->data['custom_error'] = '';
 		$this->data['empresa'] = $this->core_model->get_by_id('empresa', ['empresa_id' => 1]);
 		$this->data['ordem_servico'] = $this->ordem_servicos_model->get_by_id($ordem_servico_id);
